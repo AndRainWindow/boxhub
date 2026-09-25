@@ -83,7 +83,7 @@ class FeedViewModel @Inject constructor(
         _state.value = _state.value.copy(loading = true, error = null)
         viewModelScope.launch {
             val siteResults = coroutineScope {
-                sites.all().map { site ->
+                sites.all().filter { it.enabled }.map { site ->
                     async {
                         // 每站取第一个版块的最新一页（v1 聚合源；M5 引入订阅源管理）
                         runCatching {

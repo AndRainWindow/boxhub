@@ -1,0 +1,63 @@
+{
+  "site": "52pojie",
+  "display_name": "吾爱破解",
+  "base_url": "https://www.52pojie.cn/",
+  "probed_at": "2026-09-25 14:43:31",
+  "checks": {
+    "home": {
+      "url": "https://www.52pojie.cn/forum.php",
+      "status": 200,
+      "bytes": 76838,
+      "final_url": "https://www.52pojie.cn/forum.php",
+      "error": null,
+      "server": null,
+      "set_cookies": [
+        "htVC_2132_saltkey=A9DZ3lIl; expires=Sun, 25-Oct-2026 06:40:36 GMT; Max-Age=2592000; path=/; secure; HttpOnly"
+      ],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "GBK",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": null,
+    "powered_by": null,
+    "generator": "Discuz!"
+  },
+  "cookie_prefix": "htVC_2132",
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": null,
+    "alive": false,
+    "modules": {}
+  },
+  "forumdisplay": {
+    "fid": "2",
+    "status": 200,
+    "bytes": 172194,
+    "unique_threads": 69,
+    "normalthread_rows": 43,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "tbody[id^=normalthread_]",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "rewrite_thread": {
+    "tid": "582852",
+    "status": 200,
+    "ok": true,
+    "has_pid": true,
+    "final_url": "https://www.52pojie.cn/thread-582852-1-1.html",
+    "error": null
+  },
+  "risks": [],
+  "conclusion": "non-discuz-or-blocked"
+}

@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.webkit.CookieManager
 import com.boxhub.app.core.network.DriverFactory
 import com.boxhub.app.core.network.SharedCookieStore
+import com.boxhub.app.data.site.SiteConfig
 import com.boxhub.app.data.site.SiteRegistry
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -69,7 +70,7 @@ class AccountManager @Inject constructor(
      */
     fun onWebCaptured(siteId: String, cookieHeader: String): Boolean {
         val site = SiteRegistry.byId(siteId) ?: return false
-        val hasAuth = cookies.importFromHeader(site.baseUrl, cookieHeader)
+        val hasAuth = cookies.importFromHeader(site.baseUrl, cookieHeader, site.regexPattern())
         if (!hasAuth) return false
 
         // cookie 前缀自动发现（恩山等 cookiePrefix=null 的站）
@@ -107,11 +108,12 @@ class AccountManager @Inject constructor(
     /** 登录采集等待期间的 cookie 头检测（供 LoginScreen 轮询调用） */
     fun capturedEnough(siteId: String, cookieHeader: String): Boolean {
         val site = SiteRegistry.byId(siteId) ?: return false
-        val prefix = site.cookiePrefix
-            ?: prefs.getString(keyPrefix(siteId), null)
-            ?: SharedCookieStore.discoverAuthPrefix(cookieHeader)
-            ?: return false
-        return cookieHeader.contains("${prefix}_auth=")
+        // 按站点 auth 模式判定（Discuz 前缀式 / V2EX A2 / Flarum forum_session）
+        val names = cookieHeader.split(";").mapNotNull {
+            it.substringBefore("=").trim().takeIf { n -> n.isNotEmpty() }
+        }
+        val pattern = site.regexPattern()
+        return names.any { pattern.matches(it) }
     }
 
     // ---------- 校验 ----------
@@ -120,18 +122,23 @@ class AccountManager @Inject constructor(
     suspend fun validate(siteId: String): AccountState {
         val site = SiteRegistry.byId(siteId) ?: return AccountState.LoggedOut
         val current = _states.value[siteId] ?: AccountState.LoggedOut
-        if (current is AccountState.LoggedOut && !cookies.hasAuthCookie(site.domains)) return current
+        if (current is AccountState.LoggedOut && !cookies.hasAuthCookie(site.domains, site.regexPattern())) return current
         val username = runCatching { drivers.driver(siteId, site).loginUsername() }.getOrNull()
         android.util.Log.d("BoxHubAcct", "validate $siteId -> username=$username (was=$current)")
-        val next = if (username != null) {
-            validatedThisSession.add(siteId)
-            prefs.edit().putString(keyUser(siteId), username)
-                .putBoolean(keyExpired(siteId), false).apply()
-            AccountState.LoggedIn(username)
-        } else {
-            // 有 auth cookie 却解析不到登录名 → 会话失效（持久化，重启可出横幅）
-            prefs.edit().putBoolean(keyExpired(siteId), true).apply()
-            AccountState.Expired
+        val next = when {
+            username != null -> {
+                validatedThisSession.add(siteId)
+                prefs.edit().putString(keyUser(siteId), username)
+                    .putBoolean(keyExpired(siteId), false).apply()
+                AccountState.LoggedIn(username)
+            }
+            // 有 cookie 但解析不到登录名：仅在原本已登录时判失效。
+            // （看雪 bbs_sid 游客也有，LoggedOut 站不得误标 Expired）
+            current is AccountState.LoggedIn -> {
+                prefs.edit().putBoolean(keyExpired(siteId), true).apply()
+                AccountState.Expired
+            }
+            else -> AccountState.LoggedOut
         }
         update(siteId, next)
         return next
@@ -189,3 +196,7 @@ class AccountManager @Inject constructor(
     /** 运行时已发现的 cookie 前缀（登录后回填；供 UI/日志展示） */
     fun discoveredPrefix(siteId: String): String? = prefs.getString(keyPrefix(siteId), null)
 }
+
+/** 站点 auth cookie 模式（字符串配置 → Regex，带兜底） */
+fun SiteConfig.regexPattern(): Regex =
+    runCatching { Regex(authCookiePattern) }.getOrDefault(SharedCookieStore.AUTH_COOKIE)

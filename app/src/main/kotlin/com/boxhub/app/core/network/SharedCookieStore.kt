@@ -70,7 +70,7 @@ class SharedCookieStore private constructor(
      * 导入 CookieManager.getCookie() 的输出（"a=b; c=d"）到 [baseUrl] 所属 host。
      * @return 是否存在 Discuz 登录凭证（auth cookie）
      */
-    fun importFromHeader(baseUrl: String, header: String): Boolean {
+    fun importFromHeader(baseUrl: String, header: String, authPattern: Regex? = null): Boolean {
         val url = baseUrl.toHttpUrlOrNull() ?: return false
         val host = url.host
         val map = store.getOrPut(host) { ConcurrentHashMap() }
@@ -87,7 +87,7 @@ class SharedCookieStore private constructor(
                 .expiresAt(Long.MAX_VALUE - 1) // 会话级；Discuz auth 本身长效
                 .build()
             map[name] = cookie
-            if (AUTH_COOKIE.matches(name)) hasAuth = true
+            if ((authPattern ?: AUTH_COOKIE).matches(name)) hasAuth = true
         }
         persist()
         return hasAuth
@@ -102,10 +102,11 @@ class SharedCookieStore private constructor(
         persist()
     }
 
-    fun hasAuthCookie(domains: Set<String>): Boolean = store.any { (host, map) ->
-        (domains.any { d -> host == d || host.endsWith(".$d") || d.endsWith(host) }) &&
-            map.keys.any { AUTH_COOKIE.matches(it) }
-    }
+    fun hasAuthCookie(domains: Set<String>, authPattern: Regex? = null): Boolean =
+        store.any { (host, map) ->
+            (domains.any { d -> host == d || host.endsWith(".$d") || d.endsWith(host) }) &&
+                map.keys.any { (authPattern ?: AUTH_COOKIE).matches(it) }
+        }
 
     /** 持久化（prefs=null 时为空操作；apply() 异步落盘） */
     private fun persist() {

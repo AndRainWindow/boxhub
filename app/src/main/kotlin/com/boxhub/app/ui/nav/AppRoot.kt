@@ -209,10 +209,48 @@ fun AppRoot() {
                 ) { entry ->
                     val siteId = entry.arguments?.getString("siteId") ?: return@composable
                     val tid = entry.arguments?.getString("tid") ?: return@composable
+                    val refreshed by entry.savedStateHandle
+                        .getStateFlow("refresh", false)
+                        .collectAsStateWithLifecycle()
                     ThreadScreen(
                         siteId = siteId,
                         tid = tid,
                         onBack = { navController.popBackStack() },
+                        refreshSignal = refreshed,
+                        onRefreshConsumed = { entry.savedStateHandle["refresh"] = false },
+                        onReplyTopic = { fid ->
+                            navController.navigate("reply/$siteId/$tid?fid=$fid")
+                        },
+                        onReplyFloor = { pid, fid ->
+                            navController.navigate("reply/$siteId/$tid?pid=$pid&fid=$fid")
+                        },
+                    )
+                }
+
+                composable(
+                    route = "reply/{siteId}/{tid}?pid={pid}&fid={fid}",
+                    arguments = listOf(
+                        navArgument("siteId") { type = NavType.StringType },
+                        navArgument("tid") { type = NavType.StringType },
+                        navArgument("pid") { type = NavType.StringType; defaultValue = "" },
+                        navArgument("fid") { type = NavType.StringType; defaultValue = "" },
+                    ),
+                ) { entry ->
+                    val siteId = entry.arguments?.getString("siteId") ?: return@composable
+                    val tid = entry.arguments?.getString("tid") ?: return@composable
+                    val pid = entry.arguments?.getString("pid")?.takeIf { it.isNotBlank() }
+                    val fid = entry.arguments?.getString("fid") ?: ""
+                    com.boxhub.app.ui.reply.ReplyScreen(
+                        siteId = siteId,
+                        tid = tid,
+                        quotePid = pid,
+                        fid = fid,
+                        onBack = { navController.popBackStack() },
+                        onSent = {
+                            navController.previousBackStackEntry
+                                ?.savedStateHandle?.set("refresh", true)
+                            navController.popBackStack()
+                        },
                     )
                 }
             }

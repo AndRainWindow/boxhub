@@ -1,6 +1,7 @@
 package com.boxhub.app.core.discuz
 
 import com.boxhub.app.core.discuz.parse.DiscuzParsers
+import com.boxhub.app.core.driver.ForumDriver
 import com.boxhub.app.core.model.Board
 import com.boxhub.app.core.model.ThreadDetail
 import com.boxhub.app.core.model.ThreadSummary
@@ -22,13 +23,13 @@ data class ThreadListPage(
  * L3 钩子：子类可覆盖 [interpretFailure]（如恩山「手机绑定」）、[parseThreadDetail] 等。
  */
 open class DiscuzDriver(
-    val config: SiteConfig,
+    override val config: SiteConfig,
     protected val http: SiteHttpGateway,
-) {
+) : ForumDriver {
 
     // ---------- 版块目录 ----------
 
-    open suspend fun boards(): DiscuzResult<List<Board>> = runCatching {
+    override suspend fun boards(): DiscuzResult<List<Board>> = runCatching {
         // 路径 A: mobile API（FULL 站：结构化、快）
         if (config.mobileApi == MobileApiSupport.FULL) {
             val page = http.get(Endpoints.mobileApi(config, "forumindex"))
@@ -70,7 +71,7 @@ open class DiscuzDriver(
 
     // ---------- 主题列表 ----------
 
-    open suspend fun threadList(fid: String, page: Int): DiscuzResult<ThreadListPage> = runCatching {
+    override suspend fun threadList(fid: String, page: Int): DiscuzResult<ThreadListPage> = runCatching {
         val resp = http.get(Endpoints.board(config, fid, page))
         if (resp.code == 404) return DiscuzResult.Failed(ErrorKind.Parse, "404 board", retryable = false)
         val (threads, total) = DiscuzParsers.threadList(resp.jsoup(), config, config.id, fid, page)
@@ -85,7 +86,7 @@ open class DiscuzDriver(
 
     // ---------- 帖子页 ----------
 
-    open suspend fun threadDetail(tid: String, page: Int): DiscuzResult<ThreadDetail> = runCatching {
+    override suspend fun threadDetail(tid: String, page: Int): DiscuzResult<ThreadDetail> = runCatching {
         val resp = http.get(Endpoints.thread(config, tid, page))
         if (resp.code == 404) return DiscuzResult.Failed(ErrorKind.Parse, "404 thread")
         val detail = DiscuzParsers.threadDetail(resp.jsoup(), config, config.id, tid, page)
@@ -106,7 +107,7 @@ open class DiscuzDriver(
     }.unwrapError()
 
     /** 当前登录用户名，null=游客 */
-    open suspend fun loginUsername(): String? = runCatching {
+    override suspend fun loginUsername(): String? = runCatching {
         val cookieNames = http.cookiesFor(config.baseUrl).keys
         val resp = http.get(config.baseUrl)
         val doc = resp.jsoup()
@@ -123,6 +124,167 @@ open class DiscuzDriver(
         )
         name
     }.getOrNull()
+
+    // ---------- M4 写操作 ----------
+
+    /** 客户端发帖冷却（每站实例独立） */
+    private var lastSubmitAt = 0L
+
+    /**
+     * 回帖表单：GET 表单页 → 解析全部提交要素。
+     * @param pid 非空 = 引用该楼（Discuz repquote 会在表单里预填引用三兄弟）
+     */
+    override suspend fun prepareReply(
+        fid: String,
+        tid: String,
+        pid: String?,
+    ): DiscuzResult<com.boxhub.app.core.model.ReplyContext> = runCatching {
+        val url = Endpoints.replyForm(config, fid, tid, pid)
+        val resp = http.get(url, referer = Endpoints.thread(config, tid, 1))
+        val html = resp.text()
+        when {
+            html.contains("您需要先登录") || html.contains("请先登录后") ->
+                return DiscuzResult.SessionExpired
+            html.contains("waf_slider_verify") || html.contains("enable JavaScript and refresh") ->
+                return DiscuzResult.Failed(
+                    com.boxhub.app.core.discuz.result.ErrorKind.RateLimited,
+                    "站点防护挑战，请稍后重试或通过登录页过盾",
+                    retryable = true,
+                )
+        }
+        val ctx = DiscuzParsers.parseReplyForm(resp.jsoup(), fid, tid)
+            ?: return DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.FormHashStale,
+                "回帖表单解析失败（缺少 formhash/posttime）",
+                retryable = true,
+            )
+        DiscuzResult.Ok(ctx)
+    }.unwrapError()
+
+    /** 回帖提交。含 15s 客户端冷却；响应经三态判读（成功/需验证码/错误分类）。 */
+    override suspend fun submitReply(
+        ctx: com.boxhub.app.core.model.ReplyContext,
+        message: String,
+        images: List<com.boxhub.app.core.model.Attachment>,
+        captcha: com.boxhub.app.core.model.CaptchaInput?,
+    ): DiscuzResult<com.boxhub.app.core.model.PostReceipt> = runCatching {
+        val elapsed = System.currentTimeMillis() - lastSubmitAt
+        val cooldownMs = config.postCooldownSeconds * 1000L
+        if (lastSubmitAt > 0 && elapsed < cooldownMs) {
+            return DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.Cooldown,
+                "两次发送需间隔 ${config.postCooldownSeconds} 秒（还差 ${(cooldownMs - elapsed + 999) / 1000}s）",
+                retryable = true,
+            )
+        }
+
+        val fields = mutableListOf(
+            "formhash" to ctx.formhash,
+            "posttime" to ctx.posttime,
+            "wysiwyg" to "0",
+            "message" to message,
+            "replysubmit" to "yes",
+        )
+        ctx.noticeAuthor?.let { fields += "noticeauthor" to it }
+        ctx.noticeTrimStr?.let { fields += "noticetrimstr" to it }
+        ctx.noticeAuthoMsg?.let { fields += "noticeauthormsg" to it }
+        captcha?.fields?.forEach { (k, v) -> if (v.isNotBlank()) fields += k to v }
+        images.mapNotNull { it.aid }.forEach { aid ->
+            fields += "attachnew[$aid][description]" to ""
+        }
+
+        val resp = http.postForm(
+            url = Endpoints.replySubmit(config, ctx.fid, ctx.tid),
+            fields = fields,
+            referer = Endpoints.replyForm(config, ctx.fid, ctx.tid),
+        )
+        if (resp.code == 413) {
+            return DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.ContentBlocked,
+                "内容过大（413）",
+            )
+        }
+        when (val outcome = DiscuzParsers.interpretWriteResponse(resp.text())) {
+            is DiscuzParsers.WriteOutcome.Success -> {
+                lastSubmitAt = System.currentTimeMillis()
+                DiscuzResult.Ok(
+                    com.boxhub.app.core.model.PostReceipt(outcome.pid, "回复发布成功"),
+                )
+            }
+            is DiscuzParsers.WriteOutcome.NeedsCaptcha -> {
+                lastSubmitAt = System.currentTimeMillis()
+                DiscuzResult.Failed(
+                    com.boxhub.app.core.discuz.result.ErrorKind.SeccodeRequired,
+                    outcome.message,
+                    retryable = true,
+                )
+            }
+            is DiscuzParsers.WriteOutcome.Fail -> DiscuzResult.Failed(
+                outcome.kind, outcome.message,
+                retryable = outcome.kind == com.boxhub.app.core.discuz.result.ErrorKind.Cooldown,
+            )
+            DiscuzParsers.WriteOutcome.SessionExpired -> DiscuzResult.SessionExpired
+        }
+    }.unwrapError()
+
+    /** 图片上传（swfupload）；uid/uploadHash 来自 ReplyContext */
+    override suspend fun uploadImage(
+        ctx: com.boxhub.app.core.model.ReplyContext,
+        bytes: ByteArray,
+        filename: String,
+        mime: String,
+    ): DiscuzResult<com.boxhub.app.core.model.Attachment> = runCatching {
+        val uid = ctx.uid
+        val hash = ctx.uploadHash
+        if (uid.isNullOrBlank() || hash.isNullOrBlank()) {
+            return DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.Parse,
+                "缺少上传令牌（uid/hash），该站可能不支持附件上传",
+            )
+        }
+        val resp = http.postMultipart(
+            url = Endpoints.uploadImage(config, uid, hash),
+            fields = mapOf("uid" to uid, "hash" to hash),
+            fileField = "Filedata",
+            filename = filename,
+            mime = mime,
+            fileBytes = bytes,
+            referer = config.baseUrl,
+        )
+        if (resp.code == 413) {
+            return DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.ContentBlocked,
+                "图片过大（413）",
+            )
+        }
+        val text = resp.text()
+        val (aid, errOrPath) = DiscuzParsers.parseUploadResponse(text)
+        when {
+            aid != null -> DiscuzResult.Ok(
+                com.boxhub.app.core.model.Attachment(
+                    url = "${config.baseUrl}forum.php?mod=attachment&aid=$aid",
+                    aid = aid, isImage = true, description = filename,
+                ),
+            )
+            errOrPath?.startsWith("PATH:") == true -> DiscuzResult.Ok(
+                com.boxhub.app.core.model.Attachment(
+                    url = Endpoints.absolute(config, errOrPath.removePrefix("PATH:")),
+                    isImage = true, description = filename,
+                ),
+            )
+            errOrPath?.startsWith("URL:") == true -> DiscuzResult.Ok(
+                com.boxhub.app.core.model.Attachment(
+                    url = errOrPath.removePrefix("URL:"),
+                    isImage = true, description = filename,
+                ),
+            )
+            else -> DiscuzResult.Failed(
+                com.boxhub.app.core.discuz.result.ErrorKind.Parse,
+                "上传响应无法解析: ${text.take(120)}",
+                retryable = true,
+            )
+        }
+    }.unwrapError()
 
     // ---------- L3 钩子 ----------
 

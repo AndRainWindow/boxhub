@@ -96,6 +96,30 @@ class GatewayMockWebServerTest {
     }
 
     @Test
+    fun `postForm encodes fields with site charset (GBK roundtrip)`() = runBlocking {
+        val gbkConfig = testConfig.copy(
+            baseUrl = server.url("/").toString(),
+            charset = "GBK",
+        )
+        val gbkGateway = SiteHttpGateway(gbkConfig, store)
+        server.enqueue(MockResponse().setBody("ok"))
+        gbkGateway.postForm(
+            server.url("/reply").toString(),
+            fields = listOf("message" to "中文回帖测试内容", "formhash" to "abc123"),
+            referer = server.url("/form").toString(),
+        )
+        val req = server.takeRequest()
+        // body = GBK 字节经百分号编码；按 GBK 解码还原 = 底层字节是 GBK 而非 UTF-8
+        val raw = String(req.body.readByteArray(), Charsets.US_ASCII)
+        val decoded = java.net.URLDecoder.decode(raw, "GBK")
+        assertTrue("decoded=$decoded", decoded.contains("中文回帖测试内容"))
+        assertTrue(decoded.contains("formhash=abc123"))
+        val ct = req.getHeader("Content-Type") ?: ""
+        assertTrue("Content-Type=$ct", ct.contains("charset=GBK"))
+        assertEquals(server.url("/form").toString(), req.getHeader("Referer"))
+    }
+
+    @Test
     fun `user agent and language headers injected`() = runBlocking {
         server.enqueue(MockResponse().setBody("ok"))
         gateway.get(server.url("/ua").toString())

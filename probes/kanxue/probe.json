@@ -1,0 +1,42 @@
+{
+  "site": "kanxue",
+  "display_name": "看雪",
+  "base_url": "https://bbs.kanxue.com/",
+  "probed_at": "2026-09-25 14:43:51",
+  "checks": {
+    "home": {
+      "url": "https://bbs.kanxue.com/",
+      "status": 200,
+      "bytes": 259890,
+      "final_url": "https://bbs.kanxue.com/",
+      "error": null,
+      "server": null,
+      "set_cookies": [
+        "bbs_sid=0qthtceg2t5bm363or1e1iomh0; expires=Sat, 26 Sep 2026 06:43:54 GMT; Max-Age=86400; HttpOnly; SameSite=Lax"
+      ],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": null,
+    "powered_by": null,
+    "generator": null
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": false,
+    "uid_value": null
+  },
+  "mobile_api": {
+    "status": 403,
+    "error": "HTTPError:403",
+    "alive": false,
+    "modules": {}
+  },
+  "risks": [],
+  "conclusion": "non-discuz-or-blocked"
+}

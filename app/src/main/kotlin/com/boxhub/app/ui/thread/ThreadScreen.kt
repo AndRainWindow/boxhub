@@ -67,6 +67,8 @@ data class ThreadUiState(
     val page: Int = 1,
     val totalPages: Int? = null,
     val error: String? = null,
+    /** 所属版块（回帖必需；从楼层页面包屑解析） */
+    val fid: String? = null,
 )
 
 @HiltViewModel
@@ -107,6 +109,7 @@ class ThreadViewModel @Inject constructor(
                     posts = r.value.posts,
                     page = r.value.page,
                     totalPages = r.value.totalPages,
+                    fid = r.value.fid ?: _state.value.fid,
                 )
                 is DiscuzResult.Failed -> _state.value = _state.value.copy(
                     loading = false,
@@ -127,6 +130,11 @@ fun ThreadScreen(
     siteId: String,
     tid: String,
     onBack: () -> Unit,
+    /** 回帖成功返回后的刷新信号（AppRoot 用 savedStateHandle 传递） */
+    refreshSignal: Boolean = false,
+    onRefreshConsumed: () -> Unit = {},
+    onReplyTopic: (fid: String) -> Unit,
+    onReplyFloor: (pid: String, fid: String) -> Unit,
     viewModel: ThreadViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -134,6 +142,12 @@ fun ThreadScreen(
     var viewer by remember { mutableStateOf<Pair<List<com.boxhub.app.core.model.Attachment>, Int>?>(null) }
 
     LaunchedEffect(siteId, tid) { viewModel.open(siteId, tid, 1) }
+    LaunchedEffect(refreshSignal) {
+        if (refreshSignal) {
+            viewModel.refresh()
+            onRefreshConsumed()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -180,6 +194,21 @@ fun ThreadScreen(
                 }
             }
         },
+        floatingActionButton = {
+            val fid = state.fid
+            if (state.posts.isNotEmpty() && fid != null) {
+                androidx.compose.material3.FloatingActionButton(
+                    onClick = { onReplyTopic(fid) },
+                    containerColor = MaterialTheme.colorScheme.tertiary,
+                ) {
+                    Text(
+                        "回复",
+                        color = MaterialTheme.colorScheme.onTertiary,
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                }
+            }
+        },
         containerColor = MaterialTheme.colorScheme.background,
     ) { padding ->
         Box(Modifier.padding(padding).fillMaxSize()) {
@@ -199,11 +228,13 @@ fun ThreadScreen(
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     val baseUrl = viewModel.siteBaseUrl()
+                    val replyFid = state.fid // 只读引擎（V2EX/海纳斯/看雪）无 fid → 隐藏回复入口
                     itemsIndexed(state.posts, key = { _, p -> p.pid }) { _, post ->
                         PostCard(
                             post = post,
                             siteBaseUrl = baseUrl,
                             onOpenImage = { imgs, idx -> viewer = imgs to idx },
+                            onReply = replyFid?.let { fid -> { onReplyFloor(post.pid, fid) } },
                         )
                         Spacer(Modifier.height(6.dp))
                     }
@@ -228,6 +259,7 @@ private fun PostCard(
     post: Post,
     siteBaseUrl: String,
     onOpenImage: (List<com.boxhub.app.core.model.Attachment>, Int) -> Unit,
+    onReply: (() -> Unit)? = null,
 ) {
     Column(
         Modifier
@@ -255,14 +287,33 @@ private fun PostCard(
                     )
                     if (post.isOp) Pill("楼主")
                 }
-                Text(
-                    listOfNotNull(
-                        "#${post.floor}",
-                        relativeTime(post.postedAt).takeIf { it.isNotBlank() },
-                    ).joinToString(" · "),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        listOfNotNull(
+                            "#${post.floor}",
+                            relativeTime(post.postedAt).takeIf { it.isNotBlank() },
+                        ).joinToString(" · "),
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    if (onReply != null) {
+                        androidx.compose.material3.TextButton(
+                            onClick = onReply,
+                            contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                                horizontal = 6.dp, vertical = 0.dp,
+                            ),
+                        ) {
+                            Text(
+                                "回复",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.primary,
+                            )
+                        }
+                    }
+                }
             }
         }
 

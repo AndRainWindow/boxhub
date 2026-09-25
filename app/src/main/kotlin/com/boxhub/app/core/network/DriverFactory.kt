@@ -1,6 +1,8 @@
 package com.boxhub.app.core.network
 
 import com.boxhub.app.core.discuz.DiscuzDriver
+import com.boxhub.app.core.driver.ForumDriver
+import com.boxhub.app.data.site.Engine
 import com.boxhub.app.data.site.SiteConfig
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
@@ -13,11 +15,18 @@ class DriverFactory @Inject constructor(
 ) {
 
     private val gateways = ConcurrentHashMap<String, SiteHttpGateway>()
-    private val drivers = ConcurrentHashMap<String, DiscuzDriver>()
+    private val drivers = ConcurrentHashMap<String, ForumDriver>()
 
     fun gateway(siteId: String, config: SiteConfig): SiteHttpGateway =
         gateways.getOrPut(siteId) { SiteHttpGateway(config, cookies) }
 
-    fun driver(siteId: String, config: SiteConfig): DiscuzDriver =
-        drivers.getOrPut(siteId) { DiscuzDriver(config, gateway(siteId, config)) }
+    fun driver(siteId: String, config: SiteConfig): ForumDriver =
+        drivers.getOrPut(siteId) {
+            when (config.engine) {
+                Engine.DISCUZ -> DiscuzDriver(config, gateway(siteId, config))
+                Engine.V2EX -> com.boxhub.app.core.driver.V2exDriver(config, gateway(siteId, config))
+                Engine.FLARUM -> com.boxhub.app.core.driver.FlarumDriver(config, gateway(siteId, config))
+                Engine.KANXUE -> com.boxhub.app.core.driver.KanxueDriver(config, gateway(siteId, config))
+            }
+        }
 }

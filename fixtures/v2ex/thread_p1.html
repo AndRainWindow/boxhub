@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="Content-Type" content="text/html;charset=utf-8">
+    <meta name="Referrer" content="unsafe-url">
+    <meta content="True" name="HandheldFriendly">
+    
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="detectify-verification" content="d0264f228155c7a1f72c3d91c17ce8fb" />
+<meta name="p:domain_verify" content="b87e3b55b409494aab88c1610b05a5f0"/>
+<meta name="alexaVerifyID" content="OFc8dmwZo7ttU4UCnDh1rKDtLlY" />
+<meta name="baidu-site-verification" content="D00WizvYyr" />
+<meta name="msvalidate.01" content="D9B08FEA08E3DA402BF07ABAB61D77DE" />
+<meta property="wb:webmaster" content="f2f4cb229bda06a4" />
+<meta name="google-site-verification" content="LM_cJR94XJIqcYJeOCscGVMWdaRUvmyz6cVOqkFplaU" />
+<meta name="wwads-cn-verify" content="c8ffe9a587b126f152ed3d89a146b445" />
+<script type="text/javascript" src="https://cdn.wwads.cn/js/makemoney.js" async></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5060390720525238"
+     crossorigin="anonymous"></script>
+    
+    <title>用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman - V2EX</title>
+    <link rel="dns-prefetch" href="https://static.v2ex.com/" />
+<link rel="dns-prefetch" href="https://cdn.v2ex.com/" />
+<link rel="dns-prefetch" href="https://i.v2ex.co/" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com/" />    
+    <style>
+        body {
+            min-width: 820px;
+            font-family: "Helvetica Neue", "Luxi Sans", "Segoe UI", "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Logo";
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/454ba781472b4ab23e236c2c9ddaf9f150f5519b-combo.css?t=1790324400">
+    
+    <script>
+        const SITE_NIGHT = 0;
+    </script>
+    <link rel="stylesheet" href="/static/css/vendor/tomorrow.css?v=3c006808236080a5d98ba4e64b8f323f" type="text/css">
+    
+    <link rel="icon" sizes="192x192" href="/static/icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon-180.png?v=91e795b8b5d9e2cbf2d886c3d4b7d63c">
+    
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/png">
+    
+    
+    <link rel="manifest" href="/manifest.webmanifest">
+    <script>
+        const LANG = 'enus';
+        const FEATURES = ['search', 'favorite-nodes-sort'];
+    </script>
+    <script src="/assets/fd0ef18bd5c026b62b647cd0b83aec22a6de53fe-combo.js?t=1790324400" defer></script>
+    <meta name="description" content="分享创造 - @wujiuye99 - 25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一">
+    
+    
+    <link rel="canonical" href="https://www.v2ex.com/t/1244674">
+    
+    
+
+
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman - V2EX" />
+<meta property="og:description" content="分享创造 - @wujiuye99 - 25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一" />
+<meta property="og:url" content="https://www.v2ex.com/t/1244674" />
+<meta property="og:site_name" content="V2EX" />
+
+<meta property="article:tag" content="create" />
+<meta property="article:section" content="分享创造" />
+<meta property="article:published_time" content="2026-09-24T15:58:19Z" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="分享创造 - @wujiuye99 - 25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一" />
+<meta name="twitter:title" content="用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman - V2EX" />
+<meta name="twitter:image" content="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_xlarge.png?m=1790263292" />
+<meta name="twitter:site" content="@V2EX" />
+<meta name="twitter:creator" content="@V2EX" />
+
+<script type="application/ld+json">{"comment": [{"text": "op 你好，为啥点击都是无法使用促销优惠呢，奇怪，我美区国区账户都试过了。", "datePublished": "2026-09-24T16:22:32Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/CalledKingsley", "@type": "Person", "name": "CalledKingsley"}}, {"text": "被人用完了吧", "datePublished": "2026-09-24T16:34:45Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/btpuadom", "@type": "Person", "name": "btpuadom"}}, {"text": "@CalledKingsley 国区是可以用的哦，估计是被用了。没想到这么快就被用了。", "datePublished": "2026-09-24T16:43:59Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@wujiuye99 #3 奇怪，之前领别的码的时候，被用的话都是提示只能使用一次。 这个码居然是这个提示。不管怎么样，op ，中秋快乐，国庆快乐🎉", "datePublished": "2026-09-24T16:45:46Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/CalledKingsley", "@type": "Person", "name": "CalledKingsley"}}, {"text": "@wujiuye99 不是被使用了，估计是还没生效", "datePublished": "2026-09-24T16:47:22Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/itart", "@type": "Person", "name": "itart"}}, {"text": "@itart 哦哦，好像是，之前遇到过。", "datePublished": "2026-09-24T16:50:56Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@CalledKingsley 谢谢你！祝你假期多欢乐！", "datePublished": "2026-09-24T16:52:52Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@wujiuye99 #6 那这些码啥时候生效呢🤣", "datePublished": "2026-09-24T17:01:13Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/CalledKingsley", "@type": "Person", "name": "CalledKingsley"}}, {"text": "奇怪，显示的是无法使用，而非被使用", "datePublished": "2026-09-24T17:02:35Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/ffalex", "@type": "Person", "name": "ffalex"}}, {"text": "@wujiuye99 国区也看了，不能使用", "datePublished": "2026-09-24T18:56:52Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/in211240520", "@type": "Person", "name": "in211240520"}}, {"text": "我以前也是抓包爱好者，看到 up 的帖子，我突然意识到，我大概有一年没有自己去分析抓包文件了。去年，我还会问一问 llm 抓包分析的关键信息，做一下判断。现在 llm 基本能一把得出问题结论，我最多校验下里面的核心判断依赖是否正确。\n我没做过移动端，不清楚移动端的开发需求。\n对了，安卓端，是不是可以考虑上 eBPF ，至少不需要信任中间证书，就能直接拿到未加密数据", "datePublished": "2026-09-24T21:51:38Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/swananan", "@type": "Person", "name": "swananan"}}, {"text": "感谢 OP ，反馈两个问题，iOS17 系统上进入 AI 助手模式无法退出了，而且个性化设置中的 UI 偏好设置一点就闪退", "datePublished": "2026-09-24T22:59:05Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/SoloBaby", "@type": "Person", "name": "SoloBaby"}}, {"text": "感谢。反馈两个问题，系统 ios27 ，1-api 收藏后实际在收藏目录中没有。2-url 过长的话会自动隐藏后面部分，只能复制到其他地方查看", "datePublished": "2026-09-24T23:45:28Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/fiftheighth9527", "@type": "Person", "name": "fiftheighth9527"}}, {"text": "使用了下，好像是用 go wails 开发的？", "datePublished": "2026-09-25T00:14:06Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/fusxcs", "@type": "Person", "name": "fusxcs"}}, {"text": "我去一觉睡醒上面全没了", "datePublished": "2026-09-25T00:43:58Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/in211240520", "@type": "Person", "name": "in211240520"}}, {"text": "@fusxcs 嗯嗯，桌面端是用 go wails3 开发的", "datePublished": "2026-09-25T00:59:52Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@fiftheighth9527 感谢反馈。关于第一个问题：收藏页分请求和 api 两个 tab ，您需要切换到 api tab 才能看到哦。关于第二个问题，url 过长的部分基本都是查询参数，查询参数放到了 url 卡片，如果只是查看，key-value 查看更方便哦，也方便 copy 。", "datePublished": "2026-09-25T01:05:08Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@SoloBaby 感谢反馈，我看模拟器能不能复现，没有 ios17 的设备。", "datePublished": "2026-09-25T01:19:59Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@swananan 感谢分享。这说明 cli+llm 确实是有用的。android 端证书确实是个问题，所以也没几个用户，eBPF 是个方向，我们研究研究。", "datePublished": "2026-09-25T01:23:38Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@CalledKingsley 一觉醒来被用完了，送你一个，赶紧看消息，被用了就没了，哈哈：M7E66KT46EXWRKR6TY,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=M7E66KT46EXWRKR6TY", "datePublished": "2026-09-25T01:25:22Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "感谢大家的分享和反馈，再送大家 5 个：\nTKER7KPJHLPHYKFEYA,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=TKER7KPJHLPHYKFEYA\n6YNT7FN7XY6M6KPH8F,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=6YNT7FN7XY6M6KPH8F\nLAF64AJK4RLRNTMYX3,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=LAF64AJK4RLRNTMYX3\n3TXRW43FKLFR3XPTY6,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=3TXRW43FKLFR3XPTY6\nJWEX833PFEH8HMFRR4,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=JWEX833PFEH8HMFRR4", "datePublished": "2026-09-25T01:27:37Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "大佬，这些都是国区的码吗？都提示无法使用此优惠，能否求个美区码？不然跨区使用会掉 Pro ，谢谢\ncG02NjZAcHJvdG9ubWFpbC5jb20=", "datePublished": "2026-09-25T01:33:36Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/eocp2020", "@type": "Person", "name": "eocp2020"}}, {"text": "@SoloBaby AI 助手模式下，左上角有个菜单按钮，点击侧边菜单会展开，同样找到个性化设置，就能看到了。", "datePublished": "2026-09-25T02:03:43Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "opop ，求一个外区码：bmllcmlza3lAZ21haWwuY29t", "datePublished": "2026-09-25T02:23:24Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/ffalex", "@type": "Person", "name": "ffalex"}}, {"text": "windows 版本有没有优惠？", "datePublished": "2026-09-25T02:31:44Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/BetterSci", "@type": "Person", "name": "BetterSci"}}, {"text": "@BetterSci 会员是四端共用的，只是 pc 端没做兑换码功能，所以只能用 iOS 的优惠代码。", "datePublished": "2026-09-25T02:47:25Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "哎呀为 来晚了大佬 能来一个么 eXlsdXhlQDE2My5jb20=", "datePublished": "2026-09-25T03:00:27Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/yyluxe", "@type": "Person", "name": "yyluxe"}}, {"text": "bGlmZWk2NjcxQGdtYWlsLmNvbQ== 大佬求个码", "datePublished": "2026-09-25T03:22:01Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/lifei6671", "@type": "Person", "name": "lifei6671"}}, {"text": "起晚了，申请个优惠码 dGVjaG5pY2F0OTAyQGdtYWlsLmNvbQ==", "datePublished": "2026-09-25T03:33:25Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/deadlybugs", "@type": "Person", "name": "deadlybugs"}}, {"text": "免费优惠码最后再放 5 个，外区也可用：\nKFEHMXRXX6EEEETEAN,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=KFEHMXRXX6EEEETEAN\nWE4N7AHM4RPNYXJYER,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=WE4N7AHM4RPNYXJYER\nW4JTW3M4JPEKMYNPF4,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=W4JTW3M4JPEKMYNPF4\nNELWTXHLNYPP8P48H7,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=NELWTXHLNYPP8P48H7\nWRJMX4RMPJAKNFJKP4,https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=WRJMX4RMPJAKNFJKP4\n好了，已经是最后一批免费码哈，再求也不发了。\n如果您真的喜欢 ApiCatcher ，我们继续提供 100 个超低价的终身会员优惠链接，在 iOS 上打开链接可领取，有效期一个月： https://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=V2EX", "datePublished": "2026-09-25T03:41:09Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "好东西啊 NjQ2ODM2NDE1QHFxLmNvbQ==求个", "datePublished": "2026-09-25T03:44:36Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/followadc", "@type": "Person", "name": "followadc"}}, {"text": "W4JTW3M4JPEKMYNPF4 已用，感谢", "datePublished": "2026-09-25T03:47:59Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/lockheart", "@type": "Person", "name": "lockheart"}}, {"text": "WRJMX4RMPJAKNFJKP4 已用，感谢 op ，另外，mac 端的 ui 设计优化下就更好了，比如折叠侧边栏按钮放到顶部", "datePublished": "2026-09-25T03:51:58Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/ffalex", "@type": "Person", "name": "ffalex"}}, {"text": "NDQ0ODMzMEBnbWFpbC5jb20=\n求个码，错过了一晚上", "datePublished": "2026-09-25T04:05:04Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/in211240520", "@type": "Person", "name": "in211240520"}}, {"text": "@wujiuye99 #23 刚试了下确实是这样 感谢解答 那就只剩个性化设置中的 ui 偏好设置闪退的问题了", "datePublished": "2026-09-25T04:29:25Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/SoloBaby", "@type": "Person", "name": "SoloBaby"}}, {"text": "@SoloBaby 上午我复现了，是 ios17 的 swiftdata 的问题，下个版本会解决（砍掉 ios17 上的一个 ui 配置项）。", "datePublished": "2026-09-25T04:35:10Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "@ffalex 收到反馈，下个版本优化。", "datePublished": "2026-09-25T04:35:44Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "求个码 1449621606@qq.com 谢谢老板", "datePublished": "2026-09-25T04:36:51Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/feller", "@type": "Person", "name": "feller"}}, {"text": "@wujiuye99 请问楼主，我在 iOS 上购买之后，怎么在 mac 桌面端上登录呢", "datePublished": "2026-09-25T05:13:05Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/Xhofe", "@type": "Person", "name": "Xhofe"}}, {"text": "WRJMX4RMPJAKNFJKP4,已经使用。感谢", "datePublished": "2026-09-25T05:35:56Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/mgcnrx11", "@type": "Person", "name": "mgcnrx11"}}, {"text": "@Xhofe 在设置页面，有个“同步订阅”菜单，用你的邮箱接收验证码登录，登录后会自动绑定订阅到登录的邮箱，然后在桌面端用邮箱登录，这样就可以了。", "datePublished": "2026-09-25T07:36:15Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}}, {"text": "大佬可以求个码吗，早上看了码都是错的，下午没赶上。谢谢了\nY2hlbmNoZW5AZHVjay5jb20=", "datePublished": "2026-09-25T08:06:44Z", "@type": "Comment", "author": {"url": "https://www.v2ex.com/member/DeliMG", "@type": "Person", "name": "DeliMG"}}], "interactionStatistic": [{"userInteractionCount": 1560, "@type": "InteractionCounter", "interactionType": "https://schema.org/ViewAction"}, {"userInteractionCount": 5, "@type": "InteractionCounter", "interactionType": "https://schema.org/LikeAction"}, {"userInteractionCount": 42, "@type": "InteractionCounter", "interactionType": "https://schema.org/ReplyAction"}], "text": "25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一些功能但试了几款都没有，就更想自己做一款了。\n25 年我在 app store 看到的抓包工具还不到十款吧（现在再去看就多了），基本长得都差不多，功能也差不多，体验也差不多。一看就知道都是基于开源的版本改的。\n我感觉这是个机会吧，虽然是小众需求，但能选择的产品不多，而且现有产品也不好用，于是就想开发一款比现有产品都好用的抓包工具：UI 简洁、容易上手、操作简单。把 90%常用的功能做得足够简单，让用户使用不需要看说明书，并且操作步骤能一步完成就不要让用户操作两步。\n第一个版本只做了几个核心功能，但用了一个月时间写完，因审核问题，又延迟一个月，到 26 年 1 月低才上架成功。\n当时我其实没有了解到有 Proxyman 这款产品，我发布后不久才发现的，因为我没去做什么调研，只在 AppStore 上搜索有哪些抓包工具，而 Proxyman 又没有上架中国。\n所以后面当我了解到 Proxyman 后，也是看 Proxyman 提供哪些功能我们还没有的就加上了，ApiCatcher 的功能才慢慢增多。\n我并不想在价格上做优势，面向全球用户，Proxyman 定价多少我们也定价多少，我们想卷的是用户体验！\n这半年我大部分时间都投入到了 ApiCatcher ，从开发 iOS 版本，到开发桌面端，再到 Android 端，目前已经支持 iOS 、Android 、Windows 、macOS 四个平台。也做了 Burp Suite 插件，能够在移动设备上实时捕获 HTTP/HTTPS 流量并实时传到 Burp Suite 上分析。还开放了实时同步协议，让所有用户都能实现自己开发接收端，实现类似 Burp Suite 插件这样的需求，这其实也是用户向我们提的需求。\n在完成几个端的开发后，我们开始优化产品的一些细节体验，细节是最难描述的，但如果用过 ApiCatcher ，应该能感受到一些细节上的用心，举几个例子：\n编辑请求头时会提供常见请求头 key 和 value 选项（能选就不输入，因为记不住，还得去搜索复制）。\n写脚本提供 AI 生成，APP 将请求自动生成 API 文档加入系统提示词，用户只需要描述需求就能生成脚本，生成的脚本还可以从历史请求中选择一个请求测试，不仅能查看结果还能看脚本打印的日志。\n写正则表达式不会写？ AI 一键生成，生成后可以选择一个请求测试，测试失败可以一键修复。\n..... 这样的细节非常多，在此不过多介绍，说再多不如上手体验。\nProxyman 做的一些 AI 功能我们并不想做，不想为了做而做。我们加入 AI 更想让 AI 做擅长的事情、做真正用户需要的事情：帮生成正则表达式、帮生成 cron 表达式、帮生成脚本等。\n抓包工具那么多，但用户需求的功能就那几个，所以我们要做的并不是跟 Proxyman 等抓包工具比谁的功能更多、比谁的功能更强，而是在用户实际需求、常用的功能上，比谁的体验用户更喜欢。当然，我们不会做推广，知道 Proxyman 的用户并不知道 ApiCatcher 。\nApiCatcher\n的抓包功能是免费的，欢迎大家下载体验！\n官网：\nhttps://apicatcher.net\n这里也赠送几个终身会员免费优惠链接：(在 iOS 上点击链接跳转到 AppStore 领取)\n4XNLWHMLM3TY4RAJTT,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=4XNLWHMLM3TY4RAJTT\n3AAEL7TL8EK67WNEM4,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=3AAEL7TL8EK67WNEM4\nMAR8LAE8XMNLW4JYPE,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=MAR8LAE8XMNLW4JYPE\n3WA83RPW6M4633XNAW,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=3WA83RPW6M4633XNAW\nFPHFLNK8TEWT6T7X43,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=FPHFLNK8TEWT6T7X43\nNERKHXYLENPJ4MFK4N,\nhttps://apps.apple.com/redeem?ctx=offercodes\u0026id=6757103562\u0026code=NERKHXYLENPJ4MFK4N", "image": ["https://apicatcher.net/apicatcher.webp", "https://apicatcher.net/apicatcher-ai-assistant.webp", "https://apicatcher.net/pc/ui2/apicatcher-mac-request-details-tab-view.webp"], "datePublished": "2026-09-24T15:58:19Z", "commentCount": 42, "mainEntityOfPage": "https://www.v2ex.com/t/1244674", "author": {"url": "https://www.v2ex.com/member/wujiuye99", "@type": "Person", "name": "wujiuye99"}, "headline": "用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman", "url": "https://www.v2ex.com/t/1244674", "isPartOf": {"url": "https://www.v2ex.com/go/create", "@type": "WebPage", "name": "分享创造"}, "@context": "https://schema.org", "@type": "DiscussionForumPosting"}</script>
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "itemListElement": [{"position": 1, "@type": "ListItem", "item": "https://www.v2ex.com/go/create", "name": "分享创造"}, {"position": 2, "@type": "ListItem", "item": "https://www.v2ex.com/t/1244674", "name": "用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman"}], "@type": "BreadcrumbList"}</script>
+
+<link rel="top" title="Back to Top" href="#">
+
+
+<link rel="amphtml" href="https://www.v2ex.com/amp/t/1244674" />
+<script>
+const topicId = 1244674;
+var once = "93873";
+
+document.addEventListener("DOMContentLoaded", () => {
+    protectTraffic();
+    expandHubPostCards(document.getElementById('Main'));
+
+    if (typeof reloadTopicTips !== 'undefined') {
+        window.reloadTopicTips = reloadTopicTips;
+    }
+
+    const observer = new IntersectionObserver(
+        ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
+        {threshold: [1]}
+    );
+
+    observer.observe(document.getElementById('reply-box'));
+
+    
+    hljs.initHighlightingOnLoad();
+    
+
+    $('#Main').on('click', '.no, .ago', function () {
+        location.hash = $(this).parents('.cell').prop('id');
+    });
+
+    
+
+    // refresh once
+    document.addEventListener('visibilitychange', e => {
+        if (document.visibilityState === 'visible') {
+            fetchOnce().then(once => {
+                $('#once').val(once);
+            });
+        }
+    });
+
+    if (location.search.indexOf('p=') > -1) {
+    const p = Number(location.search.split('p=')[1].split('&')[0]);
+    if (p) {
+        const key = 'tp1244674';
+        if (lscache.set(key, p, 60 * 24 * 30)) { // 30 days
+            console.log(`Saved topic page number to ${key}: ` + p);
+        }
+    }
+}
+
+    
+});
+</script>
+<script type="text/javascript">
+function format(tpl) {
+    var index = 1, items = arguments;
+    return (tpl || '').replace(/{(\w*)}/g, function(match, p1) {
+        return items[index++] || p1 || match;
+    });
+}
+function loadCSS(url, callback) {
+    return $('<link type="text/css" rel="stylesheet"/>')
+        .attr({ href: url })
+        .on('load', callback)
+        .appendTo(document.head);
+}
+function lazyGist(element) {
+    var $btn = $(element);
+    var $self = $(element).parent();
+    var $link = $self.find('a');
+    $btn.prop('disabled', 'disabled').text('Loading...');
+    $.getJSON(format('{}.json?callback=?', $link.prop('href').replace($link.prop('hash'), '')))
+        .done(function(data) {
+            loadCSS(data.stylesheet, function() {
+                $self.replaceWith(data.div);
+                $('.gist .gist-file .gist-meta a').filter(function() { return this.href === $link.prop('href'); }).parents('.gist-file').siblings().remove();
+            });
+        })
+        .fail(function() { $self.replaceWith($('<a>').attr('href', url).text(url)); });
+}
+</script>
+
+
+    
+</head>
+<body>
+    
+    
+    <div id="Top">
+        <div class="content">
+            <div class="site-nav">
+                <a href="/" name="top" title="way to explore"><div id="Logo"></div></a>
+                <div id="search-container">
+                    <input id="search" type="text" maxlength="128" autocomplete="off" tabindex="1">
+                    <div id="search-result" class="box"></div>
+                </div>
+                <div class="tools" style="font-size: 13px;">
+                
+                    <a href="/" class="top">Home</a>
+                    <a href="https://edge.v2ex.com/signup" class="top">Sign Up</a>
+                    <a href="https://edge.v2ex.com/signin" class="top">Sign In</a>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="Wrapper">
+        <div class="content">
+            
+            <div id="Leftbar"></div>
+            <div id="Rightbar">
+                <div class="sep20"></div>
+                
+
+
+
+<div class="box" id="pro-campaign-container">
+    <!-- Campaign content will be loaded here -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function escapeHtml(text) {
+        if (text === null || text === undefined) return '';
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function safeHttpsUrl(url) {
+        if (url === null || url === undefined) return '';
+        var value = String(url);
+        if (!/^https:\/\//i.test(value)) return '';
+        try {
+            var parsed = new URL(value);
+            if (parsed.protocol !== 'https:') return '';
+            return parsed.href;
+        } catch (e) {
+            return '';
+        }
+    }
+
+    function safeMemberUsername(username) {
+        if (username === null || username === undefined) return '';
+        username = String(username);
+        if (!/^[A-Za-z0-9_-]+$/.test(username)) return '';
+        return username;
+    }
+
+    function bindCampaignLinks(container) {
+        var items = container.querySelectorAll('[data-pro-link]');
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener('click', function() {
+                var link = this.getAttribute('data-pro-link');
+                if (link) {
+                    window.open(link, '_blank', 'noopener');
+                }
+            });
+        }
+    }
+
+    function renderCampaign(campaign) {
+        let html = '';
+        let displayFormat = campaign.display_format || 'text-only';
+        let linkUrl = safeHttpsUrl(campaign.link);
+        if (!linkUrl) return '';
+
+        let title = escapeHtml(campaign.title);
+        let description = escapeHtml(campaign.description);
+        let callToAction = escapeHtml(campaign.call_to_action);
+        let link = escapeHtml(linkUrl);
+        let imgSmallUrl = safeHttpsUrl(campaign.img_small_url);
+        let imgBannerUrl = safeHttpsUrl(campaign.img_banner_url);
+        let imgBigUrl = safeHttpsUrl(campaign.img_big_url);
+        let memberUsername = safeMemberUsername(campaign.member && campaign.member.username);
+        let promotedBy = memberUsername ? `Promoted by <a href="/member/${encodeURIComponent(memberUsername)}" target="_blank" rel="noopener noreferrer">${escapeHtml(memberUsername)}</a>` : 'Promoted by V2EX member';
+
+        if (displayFormat === 'small-with-description' && !imgSmallUrl) {
+            displayFormat = 'text-only';
+        } else if (displayFormat === 'banner-only' && !imgBannerUrl) {
+            displayFormat = 'text-only';
+        } else if ((displayFormat === 'big-only' || displayFormat === 'big-with-description' || displayFormat === 'big-with-title-description-button') && !imgBigUrl) {
+            displayFormat = 'text-only';
+        }
+
+        html = `<div class="pro-unit-title">${title}</div>`;
+        switch(displayFormat) {
+            case 'text-only':
+                html += `
+                    <div class="pro-unit">
+                    <div class="pro-unit-description flex-one-row gap10">
+                        <div data-pro-link="${link}">${description}</div>
+                        <div><a href="${link}" class="pro-unit-go" target="_blank" rel="noopener noreferrer">›</a>
+                        </div>
+                    </div>
+                    </div>
+                `;
+                break;
+
+            case 'small-with-description':
+                html += `<div class="pro-unit flex-one-row">
+                    ${imgSmallUrl ? `<div class="pro-unit-small-image">
+                        <a href="${link}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(imgSmallUrl)}" class="pro-unit-img" style="max-width: 130px; max-height: 100px;" alt="" /></a>
+                    </div>` : ''}
+                    <div data-pro-link="${link}" class="pro-unit-description">${description}</div>
+                </div>`;
+                break;
+
+            case 'banner-only':
+                html += `<div class="cell"><a href="${link}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(imgBannerUrl)}" class="pro-unit-img" style="max-width: 250px; max-height: 60px; display: block; vertical-align: bottom;" alt="" /></a></div>`;
+                break;
+
+            case 'big-only':
+                html += `<div class="cell"><a href="${link}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(imgBigUrl)}" class="pro-unit-img" style="max-width: 500px; max-height: 500px; width: 100%; display: block; vertical-align: bottom;" alt="" /></a></div>`;
+                break;
+
+            case 'big-with-description':
+                html += `<div class="inner" style="padding-bottom: 0px;"><a href="${link}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(imgBigUrl)}" class="pro-unit-img" style="max-width: 500px; max-height: 500px; width: 100%; display: block; vertical-align: bottom;" alt="" /></a></div>`;
+                html += `<div class="pro-unit-description flex-one-row gap10">
+                    <div data-pro-link="${link}">${description}</div>
+                    <div><a href="${link}" class="pro-unit-go" target="_blank" rel="noopener noreferrer">›</a></div></div>`;
+                break;
+
+            case 'big-with-title-description-button':
+                html += `<div class="inner" style="padding-bottom: 0px;"><a href="${link}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(imgBigUrl)}" class="pro-unit-img" style="max-width: 500px; max-height: 500px; width: 100%; display: block; vertical-align: bottom;" alt="" /></a></div>`;
+                html += `<div class="pro-unit-description">
+                    <div style="text-align: center" data-pro-link="${link}">${description}</div>
+                    </div>`;
+                html += `<div class="pro-unit-cta-container"><a href="${link}" target="_blank" rel="noopener noreferrer" class="pro-unit-cta">${callToAction}</a></div>`;
+                break;
+
+            default:
+                html += `
+                    <div class="pro-unit-description flex-one-row gap10">
+                        <div data-pro-link="${link}">${description}</div>
+                        <div><a href="${link}" class="pro-unit-go" target="_blank" rel="noopener noreferrer">›</a></div>
+                    </div>
+                `;
+        }
+
+        html += `<div class="pro-unit-from flex-one-row gap10">
+        <div>${promotedBy}</div>
+        <div><a href="/pro/about" target="_blank" rel="noopener noreferrer" class="fade"><i class="fa fa-question-circle fade"></i> <span style="font-size: 12px; color: var(--color-fade)">PRO</span></a></div>
+        </div>`
+
+        return html;
+    }
+
+    // Load campaign from emitter
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/pro/emitter', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var campaign = JSON.parse(xhr.responseText);
+                    if (campaign && campaign.id) {
+                        var html = renderCampaign(campaign);
+                        var container = document.getElementById('pro-campaign-container');
+                        if (html) {
+                            container.innerHTML = html;
+                            bindCampaignLinks(container);
+                        } else {
+                            container.style.display = 'none';
+                        }
+                    } else {
+                        document.getElementById('pro-campaign-container').style.display = 'none';
+                    }
+                } catch (e) {
+                    document.getElementById('pro-campaign-container').style.display = 'none';
+                    console.log('Error parsing campaign data: ' + e.message);
+                }
+            } else {
+                document.getElementById('pro-campaign-container').style.display = 'none';
+                console.log('Error loading campaign: HTTP ' + xhr.status);
+            }
+        }
+    };
+
+    xhr.send();
+});
+</script>
+
+
+        
+        <div class="sep"></div>
+        <div class="box">
+            <div class="inner" id="node_sidebar">
+                <div class="sidebar_units">
+</div>
+爱意满满的作品展示区。
+<style type="text/css">
+#Wrapper {
+background-image: url("/static/img/shadow_light.png"), url("//static.v2ex.com/grids/air.png");
+background-repeat: repeat-x, repeat;
+}
+
+.box {
+border-bottom: 1px solid #cdd8ff;
+}
+</style>
+                
+            </div>
+            <div class="sidebar_compliance"><a href="/advertise" target="_blank">Advertisement</a></div>
+        </div>
+        
+    
+
+
+            </div>
+            <div id="Main">
+                <div class="sep20"></div>
+                
+<div class="box" style="border-bottom: 0px;">
+    
+    <div class="header"><div class="fr"><a href="/member/wujiuye99"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_xlarge.png?m=1790263292" class="avatar" border="0" align="default" width="73" style="width: 73px; max-height: 73px;" alt="wujiuye99" data-uid="719517" /></a></div>
+    <div class="flex-one-row gap10">
+        <div><a href="/">V2EX</a> <span class="chevron">&nbsp;›&nbsp;</span> <a href="/go/create">分享创造</a></div>
+        
+    </div>
+    <div class="sep10"></div>
+    <h1>用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman</h1>
+    <div id="topic_1244674_votes" class="votes">
+<a href="javascript:" onclick="upVoteTopic(1244674);" class="vote"><li class="fa fa-chevron-up"></li></a> &nbsp;<a href="javascript:" onclick="downVoteTopic(1244674);" class="vote"><li class="fa fa-chevron-down"></li></a></div> &nbsp; <small class="gray"><a href="/member/wujiuye99">wujiuye99</a> · <span title="2026-09-24 23:58:19 +08:00">16h 25m ago</span> · 1560 views</small>
+    </div>
+    
+    
+    
+    <div class="cell">
+        
+        <div class="topic_content"><div class="markdown_body"><p>25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一些功能但试了几款都没有，就更想自己做一款了。</p>
+<p>25 年我在 app store 看到的抓包工具还不到十款吧（现在再去看就多了），基本长得都差不多，功能也差不多，体验也差不多。一看就知道都是基于开源的版本改的。</p>
+<p>我感觉这是个机会吧，虽然是小众需求，但能选择的产品不多，而且现有产品也不好用，于是就想开发一款比现有产品都好用的抓包工具：UI 简洁、容易上手、操作简单。把 90%常用的功能做得足够简单，让用户使用不需要看说明书，并且操作步骤能一步完成就不要让用户操作两步。</p>
+<p>第一个版本只做了几个核心功能，但用了一个月时间写完，因审核问题，又延迟一个月，到 26 年 1 月低才上架成功。</p>
+<p><img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://apicatcher.net/apicatcher.webp"/></p>
+<p>当时我其实没有了解到有 Proxyman 这款产品，我发布后不久才发现的，因为我没去做什么调研，只在 AppStore 上搜索有哪些抓包工具，而 Proxyman 又没有上架中国。</p>
+<p>所以后面当我了解到 Proxyman 后，也是看 Proxyman 提供哪些功能我们还没有的就加上了，ApiCatcher 的功能才慢慢增多。</p>
+<p>我并不想在价格上做优势，面向全球用户，Proxyman 定价多少我们也定价多少，我们想卷的是用户体验！</p>
+<p>这半年我大部分时间都投入到了 ApiCatcher ，从开发 iOS 版本，到开发桌面端，再到 Android 端，目前已经支持 iOS 、Android 、Windows 、macOS 四个平台。也做了 Burp Suite 插件，能够在移动设备上实时捕获 HTTP/HTTPS 流量并实时传到 Burp Suite 上分析。还开放了实时同步协议，让所有用户都能实现自己开发接收端，实现类似 Burp Suite 插件这样的需求，这其实也是用户向我们提的需求。</p>
+<p>在完成几个端的开发后，我们开始优化产品的一些细节体验，细节是最难描述的，但如果用过 ApiCatcher ，应该能感受到一些细节上的用心，举几个例子：</p>
+<ul>
+<li>编辑请求头时会提供常见请求头 key 和 value 选项（能选就不输入，因为记不住，还得去搜索复制）。</li>
+<li>写脚本提供 AI 生成，APP 将请求自动生成 API 文档加入系统提示词，用户只需要描述需求就能生成脚本，生成的脚本还可以从历史请求中选择一个请求测试，不仅能查看结果还能看脚本打印的日志。</li>
+<li>写正则表达式不会写？ AI 一键生成，生成后可以选择一个请求测试，测试失败可以一键修复。</li>
+</ul>
+<p>..... 这样的细节非常多，在此不过多介绍，说再多不如上手体验。</p>
+<p><img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://apicatcher.net/apicatcher-ai-assistant.webp"/></p>
+<p>Proxyman 做的一些 AI 功能我们并不想做，不想为了做而做。我们加入 AI 更想让 AI 做擅长的事情、做真正用户需要的事情：帮生成正则表达式、帮生成 cron 表达式、帮生成脚本等。</p>
+<p>抓包工具那么多，但用户需求的功能就那几个，所以我们要做的并不是跟 Proxyman 等抓包工具比谁的功能更多、比谁的功能更强，而是在用户实际需求、常用的功能上，比谁的体验用户更喜欢。当然，我们不会做推广，知道 Proxyman 的用户并不知道 ApiCatcher 。</p>
+<p><img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://apicatcher.net/pc/ui2/apicatcher-mac-request-details-tab-view.webp"/></p>
+<p><a href="https://apicatcher.net" rel="nofollow">ApiCatcher</a>的抓包功能是免费的，欢迎大家下载体验！
+官网： <a href="https://apicatcher.net" rel="nofollow">https://apicatcher.net</a></p>
+<p>这里也赠送几个终身会员免费优惠链接：(在 iOS 上点击链接跳转到 AppStore 领取)</p>
+<p>4XNLWHMLM3TY4RAJTT,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=4XNLWHMLM3TY4RAJTT" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=4XNLWHMLM3TY4RAJTT</a></p>
+<p>3AAEL7TL8EK67WNEM4,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3AAEL7TL8EK67WNEM4" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3AAEL7TL8EK67WNEM4</a></p>
+<p>MAR8LAE8XMNLW4JYPE,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=MAR8LAE8XMNLW4JYPE" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=MAR8LAE8XMNLW4JYPE</a></p>
+<p>3WA83RPW6M4633XNAW,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3WA83RPW6M4633XNAW" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3WA83RPW6M4633XNAW</a></p>
+<p>FPHFLNK8TEWT6T7X43,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=FPHFLNK8TEWT6T7X43" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=FPHFLNK8TEWT6T7X43</a></p>
+<p>NERKHXYLENPJ4MFK4N,<a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=NERKHXYLENPJ4MFK4N" rel="nofollow">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=NERKHXYLENPJ4MFK4N</a></p>
+</div></div>
+        
+    </div>
+    
+    
+    
+    
+</div>
+
+<!-- SOL tip topic -->
+
+
+<div class="sep20"></div>
+
+
+<div class="box">
+    <div class="cell"><div class="fr" style="margin: -3px -5px 0px 0px;"><a href="/tag/抓包" class="tag"><li class="fa fa-tag"></li> 抓包</a><a href="/tag/用户体验" class="tag"><li class="fa fa-tag"></li> 用户体验</a><a href="/tag/接口" class="tag"><li class="fa fa-tag"></li> 接口</a></div><span class="gray">42 replies &nbsp;<strong class="snow">•</strong> &nbsp;2026-09-25 16:06:44 +08:00</span>
+    </div>
+    
+
+    
+        
+        <div id="r_18126180" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/b7e9/7d00/493018_normal.png?m=1739347684" class="avatar" border="0" align="default" alt="CalledKingsley" data-uid="493018" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">1</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/CalledKingsley" class="dark">CalledKingsley</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:22:32 +08:00">16h 1m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">op 你好，为啥点击都是无法使用促销优惠呢，奇怪，我美区国区账户都试过了。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126196" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/c924/2d0b/617199_normal.png?m=1735963062" class="avatar" border="0" align="default" alt="btpuadom" data-uid="617199" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">2</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/btpuadom" class="dark">btpuadom</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:34:45 +08:00">15h 49m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">被人用完了吧</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126210" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">3</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:43:59 +08:00">15h 40m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/CalledKingsley">CalledKingsley</a> 国区是可以用的哦，估计是被用了。没想到这么快就被用了。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126216" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/b7e9/7d00/493018_normal.png?m=1739347684" class="avatar" border="0" align="default" alt="CalledKingsley" data-uid="493018" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">4</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/CalledKingsley" class="dark">CalledKingsley</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:45:46 +08:00">15h 38m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> #3 奇怪，之前领别的码的时候，被用的话都是提示只能使用一次。 这个码居然是这个提示。不管怎么样，op ，中秋快乐，国庆快乐🎉</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126218" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/60da/3eea/172908_normal.png?m=1758354425" class="avatar" border="0" align="default" alt="itart" data-uid="172908" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">5</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/itart" class="dark">itart</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:47:22 +08:00">15h 36m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> 不是被使用了，估计是还没生效</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126222" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">6</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:50:56 +08:00">15h 33m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/itart">itart</a> 哦哦，好像是，之前遇到过。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126223" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">7</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 00:52:52 +08:00">15h 31m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/CalledKingsley">CalledKingsley</a> 谢谢你！祝你假期多欢乐！</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126228" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/b7e9/7d00/493018_normal.png?m=1739347684" class="avatar" border="0" align="default" alt="CalledKingsley" data-uid="493018" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">8</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/CalledKingsley" class="dark">CalledKingsley</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 01:01:13 +08:00">15h 22m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> #6 那这些码啥时候生效呢🤣</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126231" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/aa5a/be42/46426_normal.png?m=1786111803" class="avatar" border="0" align="default" alt="ffalex" data-uid="46426" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">9</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/ffalex" class="dark">ffalex</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 01:02:35 +08:00">15h 21m ago via Android</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">奇怪，显示的是无法使用，而非被使用</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126294" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/259b9fb5adb6619e2075876892c3a148?s=48&d=retro" class="avatar" border="0" align="default" alt="in211240520" data-uid="727956" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">10</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/in211240520" class="dark">in211240520</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 02:56:52 +08:00">13h 27m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> 国区也看了，不能使用</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126334" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/2e0f/9937/201033_normal.png?m=1790214415" class="avatar" border="0" align="default" alt="swananan" data-uid="201033" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">11</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/swananan" class="dark">swananan</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 05:51:38 +08:00">10h 32m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">我以前也是抓包爱好者，看到 up 的帖子，我突然意识到，我大概有一年没有自己去分析抓包文件了。去年，我还会问一问 llm 抓包分析的关键信息，做一下判断。现在 llm 基本能一把得出问题结论，我最多校验下里面的核心判断依赖是否正确。<br /><br />我没做过移动端，不清楚移动端的开发需求。<br /><br />对了，安卓端，是不是可以考虑上 eBPF ，至少不需要信任中间证书，就能直接拿到未加密数据</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126360" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/72ed/89d4/488379_normal.png?m=1751943035" class="avatar" border="0" align="default" alt="SoloBaby" data-uid="488379" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">12</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/SoloBaby" class="dark">SoloBaby</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 06:59:05 +08:00">9h 25m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">感谢 OP ，反馈两个问题，iOS17 系统上进入 AI 助手模式无法退出了，而且个性化设置中的 UI 偏好设置一点就闪退</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126385" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/a287438db8409ce5a23beaf9f6181f67?s=48&d=retro" class="avatar" border="0" align="default" alt="fiftheighth9527" data-uid="553077" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">13</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/fiftheighth9527" class="dark">fiftheighth9527</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 07:45:28 +08:00">8h 38m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">感谢。反馈两个问题，系统 ios27 ，1-api 收藏后实际在收藏目录中没有。2-url 过长的话会自动隐藏后面部分，只能复制到其他地方查看</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126403" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/bc98570926dae63c8594aebb2c4cc6e4?s=48&d=retro" class="avatar" border="0" align="default" alt="fusxcs" data-uid="608651" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">14</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/fusxcs" class="dark">fusxcs</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 08:14:06 +08:00">8h 10m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">使用了下，好像是用 go wails 开发的？</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126440" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/259b9fb5adb6619e2075876892c3a148?s=48&d=retro" class="avatar" border="0" align="default" alt="in211240520" data-uid="727956" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">15</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/in211240520" class="dark">in211240520</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 08:43:58 +08:00">7h 40m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">我去一觉睡醒上面全没了</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126456" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">16</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 08:59:52 +08:00">7h 24m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/fusxcs">fusxcs</a> 嗯嗯，桌面端是用 go wails3 开发的</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126466" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">17</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:05:08 +08:00">7h 19m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/fiftheighth9527">fiftheighth9527</a> 感谢反馈。关于第一个问题：收藏页分请求和 api 两个 tab ，您需要切换到 api tab 才能看到哦。关于第二个问题，url 过长的部分基本都是查询参数，查询参数放到了 url 卡片，如果只是查看，key-value 查看更方便哦，也方便 copy 。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126494" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">18</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:19:59 +08:00">7h 4m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/SoloBaby">SoloBaby</a> 感谢反馈，我看模拟器能不能复现，没有 ios17 的设备。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126502" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">19</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:23:38 +08:00">7h 0m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/swananan">swananan</a> 感谢分享。这说明 cli+llm 确实是有用的。android 端证书确实是个问题，所以也没几个用户，eBPF 是个方向，我们研究研究。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126503" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">20</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:25:22 +08:00">6h 58m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/CalledKingsley">CalledKingsley</a> 一觉醒来被用完了，送你一个，赶紧看消息，被用了就没了，哈哈：M7E66KT46EXWRKR6TY,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=M7E66KT46EXWRKR6TY" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=M7E66KT46EXWRKR6TY</a></div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126509" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">21</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:27:37 +08:00">6h 56m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">感谢大家的分享和反馈，再送大家 5 个：<br />TKER7KPJHLPHYKFEYA,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=TKER7KPJHLPHYKFEYA" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=TKER7KPJHLPHYKFEYA</a><br /><br />6YNT7FN7XY6M6KPH8F,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=6YNT7FN7XY6M6KPH8F" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=6YNT7FN7XY6M6KPH8F</a><br /><br />LAF64AJK4RLRNTMYX3,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=LAF64AJK4RLRNTMYX3" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=LAF64AJK4RLRNTMYX3</a><br /><br />3TXRW43FKLFR3XPTY6,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3TXRW43FKLFR3XPTY6" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=3TXRW43FKLFR3XPTY6</a><br /><br />JWEX833PFEH8HMFRR4,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=JWEX833PFEH8HMFRR4" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=JWEX833PFEH8HMFRR4</a></div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126515" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/ae87a821e40921c5a933f3ce4612304d?s=48&d=retro" class="avatar" border="0" align="default" alt="eocp2020" data-uid="760601" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">22</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/eocp2020" class="dark">eocp2020</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 09:33:36 +08:00">6h 50m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">大佬，这些都是国区的码吗？都提示无法使用此优惠，能否求个美区码？不然跨区使用会掉 Pro ，谢谢<br /><br />cG02NjZAcHJvdG9ubWFpbC5jb20=</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126563" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">23</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 10:03:43 +08:00">6h 20m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/SoloBaby">SoloBaby</a> AI 助手模式下，左上角有个菜单按钮，点击侧边菜单会展开，同样找到个性化设置，就能看到了。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126589" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/aa5a/be42/46426_normal.png?m=1786111803" class="avatar" border="0" align="default" alt="ffalex" data-uid="46426" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">24</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/ffalex" class="dark">ffalex</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 10:23:24 +08:00">6h 0m ago via Android</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">opop ，求一个外区码：bmllcmlza3lAZ21haWwuY29t</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126599" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/4a7d/7d3d/478526_normal.png?m=1601033276" class="avatar" border="0" align="default" alt="BetterSci" data-uid="478526" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">25</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/BetterSci" class="dark">BetterSci</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 10:31:44 +08:00">5h 52m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">windows 版本有没有优惠？</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126627" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">26</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 10:47:25 +08:00">5h 36m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/BetterSci">BetterSci</a> 会员是四端共用的，只是 pc 端没做兑换码功能，所以只能用 iOS 的优惠代码。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126653" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/473deb4b03dbd419eac156ee229472e5?s=48&d=retro" class="avatar" border="0" align="default" alt="yyluxe" data-uid="274933" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">27</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/yyluxe" class="dark">yyluxe</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:00:27 +08:00">5h 23m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">哎呀为 来晚了大佬  能来一个么 eXlsdXhlQDE2My5jb20=</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126686" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/5cbf/296d/186159_normal.png?m=1702003730" class="avatar" border="0" align="default" alt="lifei6671" data-uid="186159" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">28</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/lifei6671" class="dark">lifei6671</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:22:01 +08:00">5h 2m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">bGlmZWk2NjcxQGdtYWlsLmNvbQ== 大佬求个码</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126705" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/c4964134268d44ffabde0c1013b24846?s=48&d=retro" class="avatar" border="0" align="default" alt="deadlybugs" data-uid="93438" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">29</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/deadlybugs" class="dark">deadlybugs</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:33:25 +08:00">4h 50m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">起晚了，申请个优惠码 dGVjaG5pY2F0OTAyQGdtYWlsLmNvbQ==</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126718" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">30</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:41:09 +08:00">4h 42m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">免费优惠码最后再放 5 个，外区也可用：<br />KFEHMXRXX6EEEETEAN,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=KFEHMXRXX6EEEETEAN" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=KFEHMXRXX6EEEETEAN</a><br /><br />WE4N7AHM4RPNYXJYER,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=WE4N7AHM4RPNYXJYER" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=WE4N7AHM4RPNYXJYER</a><br /><br />W4JTW3M4JPEKMYNPF4,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=W4JTW3M4JPEKMYNPF4" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=W4JTW3M4JPEKMYNPF4</a><br /><br />NELWTXHLNYPP8P48H7,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=NELWTXHLNYPP8P48H7" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=NELWTXHLNYPP8P48H7</a><br /><br />WRJMX4RMPJAKNFJKP4,<a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=WRJMX4RMPJAKNFJKP4" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=WRJMX4RMPJAKNFJKP4</a><br /><br />好了，已经是最后一批免费码哈，再求也不发了。<br />如果您真的喜欢 ApiCatcher ，我们继续提供 100 个超低价的终身会员优惠链接，在 iOS 上打开链接可领取，有效期一个月： <a target="_blank" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=V2EX" rel="nofollow noopener">https://apps.apple.com/redeem?ctx=offercodes&amp;id=6757103562&amp;code=V2EX</a></div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126724" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/befe/b8e8/717730_normal.png?m=1741270230" class="avatar" border="0" align="default" alt="followadc" data-uid="717730" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">31</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/followadc" class="dark">followadc</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:44:36 +08:00">4h 39m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">好东西啊  NjQ2ODM2NDE1QHFxLmNvbQ==求个</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126728" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/ff59/54f0/507245_normal.png?m=1645462206" class="avatar" border="0" align="default" alt="lockheart" data-uid="507245" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">32</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/lockheart" class="dark">lockheart</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:47:59 +08:00">4h 36m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">W4JTW3M4JPEKMYNPF4 已用，感谢</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126732" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/aa5a/be42/46426_normal.png?m=1786111803" class="avatar" border="0" align="default" alt="ffalex" data-uid="46426" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">33</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/ffalex" class="dark">ffalex</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 11:51:58 +08:00">4h 32m ago via Android</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">WRJMX4RMPJAKNFJKP4 已用，感谢 op ，另外，mac 端的 ui 设计优化下就更好了，比如折叠侧边栏按钮放到顶部</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126752" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/259b9fb5adb6619e2075876892c3a148?s=48&d=retro" class="avatar" border="0" align="default" alt="in211240520" data-uid="727956" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">34</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/in211240520" class="dark">in211240520</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 12:05:04 +08:00">4h 19m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">NDQ0ODMzMEBnbWFpbC5jb20= <br />求个码，错过了一晚上</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126774" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/72ed/89d4/488379_normal.png?m=1751943035" class="avatar" border="0" align="default" alt="SoloBaby" data-uid="488379" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">35</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/SoloBaby" class="dark">SoloBaby</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 12:29:25 +08:00">3h 54m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> #23 刚试了下确实是这样 感谢解答 那就只剩个性化设置中的 ui 偏好设置闪退的问题了</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126783" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">36</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 12:35:10 +08:00">3h 48m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/SoloBaby">SoloBaby</a> 上午我复现了，是 ios17 的 swiftdata 的问题，下个版本会解决（砍掉 ios17 上的一个 ui 配置项）。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126785" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">37</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 12:35:44 +08:00">3h 48m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/ffalex">ffalex</a> 收到反馈，下个版本优化。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126787" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/e0d3/415b/395085_normal.png?m=1651494693" class="avatar" border="0" align="default" alt="feller" data-uid="395085" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">38</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/feller" class="dark">feller</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 12:36:51 +08:00">3h 47m ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">求个码 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a6b6e6e636c686b6c6a6c1a2b2b74393537">[email&#160;protected]</a> 谢谢老板</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126829" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/206c/87f6/470096_normal.png?m=1655875565" class="avatar" border="0" align="default" alt="Xhofe" data-uid="470096" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">39</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/Xhofe" class="dark">Xhofe</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 13:13:05 +08:00">3h 11m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/wujiuye99">wujiuye99</a> 请问楼主，我在 iOS 上购买之后，怎么在 mac 桌面端上登录呢</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18126867" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/dc62/47ff/71403_normal.png?m=1429072930" class="avatar" border="0" align="default" alt="mgcnrx11" data-uid="71403" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">40</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/mgcnrx11" class="dark">mgcnrx11</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 13:35:56 +08:00">2h 48m ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">WRJMX4RMPJAKNFJKP4,已经使用。感谢</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18127035" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/avatar/d5fd/baf1/719517_normal.png?m=1790263292" class="avatar" border="0" align="default" alt="wujiuye99" data-uid="719517" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">41</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/wujiuye99" class="dark">wujiuye99</a></strong> &nbsp; <div class="badges"><div class="badge op">OP</div></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 15:36:15 +08:00">47 mins ago</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="/member/Xhofe">Xhofe</a> 在设置页面，有个“同步订阅”菜单，用你的邮箱接收验证码登录，登录后会自动绑定订阅到登录的邮箱，然后在桌面端用邮箱登录，这样就可以了。</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+    
+        
+        <div id="r_18127089" class="cell">
+        
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td width="48" valign="top" align="center"><img src="https://cdn.v2ex.com/gravatar/174893dc1a44cbadf7741102c696e78d?s=48&d=retro" class="avatar" border="0" align="default" alt="DeliMG" data-uid="584755" /></td>
+                <td width="10" valign="top"></td>
+                <td width="auto" valign="top" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">42</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="/member/DeliMG" class="dark">DeliMG</a></strong> &nbsp; <div class="badges"></div>&nbsp; &nbsp;<span class="ago" title="2026-09-25 16:06:44 +08:00">17 mins ago via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">大佬可以求个码吗，早上看了码都是错的，下午没赶上。谢谢了<br />Y2hlbmNoZW5AZHVjay5jb20=</div>
+                </td>
+            </tr>
+        </table>
+        </div>
+    
+    
+
+
+</div>
+<div class="sep20"></div>
+
+
+
+<div class="sep20"></div>
+<div style="box-sizing: border-box"><div class="wwads-cn wwads-horizontal" data-id="98" style="max-width: 100%; padding-top: 10px; margin-top: 0px; text-align: left; box-shadow: 0 2px 3px rgb(0 0 0 / 10%); border-bottom: 1px solid var(--box-border-color); background-color: var(--box-background-color); color: var(--box-foreground-color);"></div></div>
+<style type="text/css">.wwads-cn { border-radius: 3px !important; } .wwads-text { color: var(--link-color) !important; }</style>
+
+
+
+
+
+
+            </div>
+            
+            
+        </div>
+        <div class="c"></div>
+        <div class="sep20"></div>
+    </div>
+    <div id="Bottom">
+        <div class="content">
+            <div class="inner">
+                <div class="sep10"></div>
+                    <div class="fr">
+                        <a href="https://www.digitalocean.com/?refcode=1b51f1a7651d" target="_blank"><div id="DigitalOcean"></div></a>
+                    </div>
+                    <strong><a href="/about" class="dark" target="_self">About</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://edge.v2ex.com/help" class="dark" target="_self">Help</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/pro/about" class="dark" target="_self">Advertise</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://blog.v2ex.com/" class="dark" target="_blank">Blog</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://edge.v2ex.com/help/api" class="dark" target="_self">API</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/faq" class="dark" target="_self">FAQ</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/privacy" class="dark" target="_self">Privacy</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://edge.v2ex.com/solana" class="dark" target="_self">Solana</a> &nbsp; <span class="snow">·</span> &nbsp; 2520 Online</strong> &nbsp; <span class="fade">Highest 6679</span> &nbsp; <span class="snow">·</span> &nbsp; <a href="/select/language" class="f11"><img src="/static/img/language.png?v=6a5cfa731dc71a3769f6daace6784739" width="16" align="absmiddle" id="ico-select-language" /> &nbsp; Select Language</a>
+                    <div class="sep20"></div>
+                    创意工作者们的社区
+                    <div class="sep5"></div>
+                    World is powered by solitude
+                    <div class="sep20"></div>
+                    <span class="small fade">VERSION: 3.9.8.5 · 62ms · <a href="/worldclock#utc">UTC 08:24</a> · <a href="/worldclock#pvg">PVG 16:24</a> · <a href="/worldclock#lax">LAX 01:24</a> · <a href="/worldclock#jfk">JFK 04:24</a><br />♥ Do have faith in what you're doing.</span>
+                <div class="sep10"></div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/b/i/h4aVhhNcXIh8YalJFgtisa136FmHudWUMDxSfPXUekwFWFWWpgJO-miX5F9d_zqdVjihMemfKbPM60-HFTzJqqppzdI3oF2Uhu6y88QVd1Zf4GKKmlPlAmgzb0UGUoaNqrBWh1lPtE4_nyt6HS3aDsgt13ySwPktqj-M9GRMdnc="></script>
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-11940834-2', 'v2ex.com');
+      ga('send', 'pageview');
+      
+
+ga('send', 'event', 'Node', 'topic', 'create');
+
+
+
+    </script>
+    
+
+    
+<button class="scroll-top" data-scroll="up" type="button"><span>❯<span></button>
+</body>
+</html>

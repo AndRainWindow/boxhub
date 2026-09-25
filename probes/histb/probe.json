@@ -1,0 +1,42 @@
+{
+  "site": "histb",
+  "display_name": "海纳斯",
+  "base_url": "https://bbs.histb.com/",
+  "probed_at": "2026-09-25 14:43:39",
+  "checks": {
+    "home": {
+      "url": "https://bbs.histb.com/",
+      "status": 200,
+      "bytes": 24998,
+      "final_url": "https://bbs.histb.com/",
+      "error": null,
+      "server": "nginx/1.18.0 (Ubuntu)",
+      "set_cookies": [
+        "flarum_session=Htz7FiJGS3zoJNdupPKxQghwT7qsfvgYZesq2HEC; Path=/; Expires=Fri, 25 Sep 2026 08:43:46 GMT; Max-Age=7200; Secure; HttpOnly; SameSite=Lax"
+      ],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": null,
+    "powered_by": null,
+    "generator": null
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": false,
+    "uid_value": null
+  },
+  "mobile_api": {
+    "status": 404,
+    "error": "HTTPError:404",
+    "alive": false,
+    "modules": {}
+  },
+  "risks": [],
+  "conclusion": "non-discuz-or-blocked"
+}

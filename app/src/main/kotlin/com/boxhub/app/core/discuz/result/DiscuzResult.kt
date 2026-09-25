@@ -28,6 +28,7 @@ enum class ErrorKind {
     NoPermission,
     ContentBlocked,       // 审核/敏感词/字数不足
     RateLimited,
+    NotSupported,
     Unknown,
 }
 

@@ -61,9 +61,18 @@ object Endpoints {
     fun notices(config: SiteConfig, page: Int = 1): String =
         "${config.baseUrl}home.php?mod=space&do=notice&page=$page"
 
-    /** 回帖表单页（拿 formhash/posttime/验证码 idhash） */
-    fun replyForm(config: SiteConfig, fid: String, tid: String): String =
-        "${config.baseUrl}forum.php?mod=post&action=reply&fid=$fid&tid=$tid"
+    /** 回帖表单页（拿 formhash/posttime/验证码 idhash）；pid 非空 = 引用该楼（repquote） */
+    fun replyForm(config: SiteConfig, fid: String, tid: String, pid: String? = null): String =
+        "${config.baseUrl}forum.php?mod=post&action=reply&fid=$fid&tid=$tid" +
+            (pid?.let { "&repquote=$it" } ?: "")
+
+    /** 回帖提交（inajax 判定见 DiscuzParsers.interpretWriteResponse） */
+    fun replySubmit(config: SiteConfig, fid: String, tid: String): String =
+        "${config.baseUrl}forum.php?mod=post&action=reply&fid=$fid&tid=$tid&extra=&replysubmit=yes"
+
+    /** swfupload 图片上传 */
+    fun uploadImage(config: SiteConfig, uid: String, hash: String): String =
+        "${config.baseUrl}misc.php?mod=swfupload&operation=upload&uid=$uid&hash=$hash&simple=1&type=image"
 
     /** 发新帖表单页 */
     fun newThreadForm(config: SiteConfig, fid: String): String =

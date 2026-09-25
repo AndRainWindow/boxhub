@@ -32,8 +32,15 @@ data class SiteConfig(
     val boardUrlPrefix: String = "forum",
     /** mobile API 支持档位 */
     val mobileApi: MobileApiSupport = MobileApiSupport.PROBE,
-    /** 登录页路径（WebView 打开 baseUrl + loginPath；五站 M0 实测同为 Discuz 标准登录页） */
+    /** 登录页路径（WebView 打开 baseUrl + loginPath；Discuz 五站+吾爱同为标准登录页） */
     val loginPath: String = "member.php?mod=logging&action=login",
+    /** 引擎类型（驱动分发） */
+    val engine: Engine = Engine.DISCUZ,
+    /**
+     * 登录凭证 cookie 名模式（WebView 采集判定用）：
+     * Discuz = `\w+_\d{4}_auth`；V2EX = `A2`；Flarum = `forum_session`；看雪待实测。
+     */
+    val authCookiePattern: String = """\w+_\d{4}_auth""",
     /** 写操作冷却（秒），账号安全：客户端强制 */
     val postCooldownSeconds: Int = 15,
     /** L2 皮肤差异：选择器按站点覆盖 */
@@ -44,9 +51,22 @@ data class SiteConfig(
     val brandColor: Int,
     /** M0 探测结论备注（人工维护） */
     val probeNote: String = "",
+    /**
+     * 是否参与聚合流自动加载。false = 站点暂不可达/主动停用，
+     * 仍可在设置页登录（如借 WebView 过 Cloudflare）。
+     */
+    val enabled: Boolean = true,
 )
 
 enum class MobileApiSupport { NONE, PROBE, FORUMDISPLAY, FULL }
+
+/** 论坛引擎（决定用哪个驱动实现） */
+enum class Engine {
+    DISCUZ,    // 恩山/瀚思/ZNDS/开心/数码之家/吾爱/Chiphell
+    V2EX,      // 自研 HTML（A2 cookie）
+    KANXUE,    // 自研（thread-{id}-{page}.htm）
+    FLARUM,    // 海纳斯（JSON:API）
+}
 
 /** 五站通用桌面 UA（M0 探测同款；伪装成桌面 Chrome，规避移动 UA 差页面） */
 const val DesktopChromeUa =

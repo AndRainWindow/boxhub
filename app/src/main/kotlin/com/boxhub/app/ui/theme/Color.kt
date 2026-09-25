@@ -29,6 +29,9 @@ val BrandHassbian = Color(0xFF41BDF5)   // 瀚思彼岸（HomeAssistant 蓝） T
 val BrandZnds = Color(0xFF2E9BE6)       // ZNDS TODO verify
 val BrandKaixin = Color(0xFFE8543F)     // 开心电视 TODO verify
 val BrandMydigit = Color(0xFFC7393B)    // 数码之家（红）TODO verify
+val BrandV2ex = Color(0xFF51880D)       // V2EX（经典按钮绿）TODO verify
+val BrandHistb = Color(0xFF4267B9)      // 海纳思（Flarum 默认蓝）TODO verify
+val BrandKanxue = Color(0xFF009EE9)     // 看雪（站点主色 #009ee9 实测）
 
 // 未读 pill / 通用中性
 val UnreadPillLight = Color(0xFFE7E7EE)

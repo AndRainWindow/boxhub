@@ -71,6 +71,21 @@ fun LoginScreen(
         var stable = 0
         while (true) {
             delay(1_500)
+            if (phase == LoginPhase.VALIDATING) {
+                // 校验窗口：成功则下方 effect 返回；8s 未过 = 采集早于真正登录
+                // （如看雪 bbs_sid 游客也有）→ 回退轮询，真登录完成后下一轮补采
+                var waited = 0
+                while (phase == LoginPhase.VALIDATING && waited < 8_000) {
+                    delay(500)
+                    waited += 500
+                }
+                if (phase == LoginPhase.VALIDATING) {
+                    stable = 0
+                    phase = LoginPhase.WAITING
+                }
+                continue
+            }
+            if (phase != LoginPhase.WAITING) continue
             val header = cm.getCookie(site.baseUrl) ?: continue
             if (viewModel.accounts.capturedEnough(siteId, header)) {
                 stable++
@@ -79,7 +94,9 @@ fun LoginScreen(
                     val ok = viewModel.accounts.onWebCaptured(siteId, header)
                     if (ok) {
                         phase = LoginPhase.VALIDATING
-                        break
+                    } else {
+                        stable = 0
+                        phase = LoginPhase.WAITING
                     }
                 }
             } else {

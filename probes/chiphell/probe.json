@@ -1,0 +1,60 @@
+{
+  "site": "chiphell",
+  "display_name": "Chiphell",
+  "base_url": "https://www.chiphell.com/",
+  "probed_at": "2026-09-25 14:43:35",
+  "checks": {
+    "home": {
+      "url": "https://www.chiphell.com/forum.php",
+      "status": 200,
+      "bytes": 33588,
+      "final_url": "https://www.chiphell.com/forum.php",
+      "error": null,
+      "server": null,
+      "set_cookies": [],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "meta"
+  },
+  "discuz": {
+    "version": "Discuz! X3.5",
+    "powered_by": null,
+    "generator": "Discuz! X3.5"
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": "parse:Expecting value: line 1 column 1 (char 0)",
+    "alive": false,
+    "modules": {},
+    "raw_head": "<html><head><title>Chiphell -- Invalid Request</title></head>\n<body>Invalid Request<br /><br />\nremote_addr: 39.184.121.76\n<br /><br />\nuser_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\n<br />\nhttp_referer: \n<br />\nRequest: /api/mobile/index.php?module=forumindex&version=4\n</body></html>\n"
+  },
+  "forumdisplay": {
+    "fid": "80",
+    "status": 200,
+    "bytes": 23262,
+    "unique_threads": 0,
+    "normalthread_rows": 0,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "unknown",
+    "page_markers": []
+  },
+  "rewrite_thread": {
+    "tid": "94087",
+    "status": 567,
+    "ok": false,
+    "has_pid": false,
+    "final_url": "https://www.chiphell.com/thread-94087-1-1.html",
+    "error": "HTTPError:567"
+  },
+  "risks": [],
+  "conclusion": "ok"
+}

@@ -1,0 +1,3514 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+		
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="XiunoBBS 4.0" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="看雪安全社区｜一个非营利性质的技术交流平台，专注于软件与系统安全、逆向工程、漏洞研究等领域的专业讨论" />
+	<meta name="application-name" content="看雪安全社区｜专业技术交流与安全研究论坛" />
+		<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta property="og:site_name" content="看雪安全社区｜专业技术交流与安全研究论坛" />
+	<meta property="og:title" content="看雪安全社区｜非营利性质的安全技术交流平台" />
+	<meta property="og:description" content="看雪安全社区是一个非营利性质的技术交流平台，致力于汇聚全球的安全研究者和开发者，专注于软件与系统安全、逆向工程、漏洞研究等领域的深度技术讨论与合作。" />
+
+		<title>看雪安全社区｜专业技术交流与安全研究论坛</title>
+
+	<link rel="shortcut icon" href="/view/img/favicon.ico" />
+	<link rel="icon" sizes="32x32" href="/view/img/favicon.ico">
+	<link rel="Bookmark" href="/view/img/favicon.ico" />
+	<link rel="stylesheet" href="/view/css/bootstrap.css?1.5">
+
+	<link rel="stylesheet" href="/view/css/bootstrap-bbs.css?1.5">
+	
+	<!-- <link rel="stylesheet" href="/view/css/bootstrap-icon.css"> -->
+	<link rel="stylesheet" href="/plugin/kanxue/css/kanxue.css?1.5">
+
+	<link rel="stylesheet" href="/view/css/icon/iconfont.css">
+
+	<style>
+		
+		@media only screen and (max-width: 780px) {
+			.card > .card-body {
+				padding: 0.3rem 0.5rem;
+			}
+			#body {
+				padding: 0.5rem 0.5rem;
+			}
+			.container {
+				padding-left: 0;
+				padding-right: 0; 
+			}
+		}
+		.content_box ul.nav .nav-link.active {
+			border-bottom: 3px solid #0099ee;
+		}
+		.avatar-3 {
+			width: 3.5rem;
+			height: 3.5rem;
+			border-radius: 3.5rem;
+		}
+		.avatar-2_4 {
+			width: 2.4rem;
+			height: 2.4rem;
+			border-radius: 2.4rem;
+		}
+		main#body {
+			/* background: #e9ecef; */
+			background: #f7f9fa;
+		}
+		@media only screen and (max-width: 993px) {
+			.changeThemeBox {
+				display: none;
+			}
+		}
+	</style>
+	
+	<style>
+		/* .photo_frame {
+			padding: 0.36rem;
+		}
+
+		.photo_frame::after {
+			content: '';
+			
+			background-size: 102%;
+			background-position: right top;
+			background-repeat: no-repeat;
+			width: 100%;
+			height: 100%;
+			
+			display: inline-block;
+			vertical-align: middle;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+		
+		.photo_frame_image1::after {
+			background-image: url(view/img/20photo_frame1.png);
+		}
+	
+		.photo_frame_image2::after {
+			background-image: url(view/img/20photo_frame2.png);
+		}
+		.photo_frame_image3::after {
+			background-image: url(view/img/20photo_frame3.png);
+		} */
+
+	</style>
+	<link rel="stylesheet" href="//www.kanxue.com/view/css/vip.css">
+	<style>
+/*
+box-shadow: 0 0 5px red;
+*/
+@keyframes xndigest {
+	0% { color: red; text-shadow: 0 0 3px #FF8D8D;} 
+	20% { color: orange; text-shadow: 0 0 3px #FFE1AD;} 
+	40% { color: green; text-shadow: 0 0 3px #B3FFAF;} 
+	65% { color: blue; text-shadow: 0 0 3px #AFE4FF;} 
+	80% { color: purple; text-shadow: 0 0 3px #FFC9F3;} 
+	100% { color: red; text-shadow: 0 0 3px #FF8D8D;} 
+}
+
+/*水晶闪烁效果 占内存*/
+i.icon-diamond.flash{color: #D53D38;  /*animation: xndigest 5s linear infinite;*/ }
+
+i.icon-digest-1 {  text-shadow: 0 0 3px #AFE4FF; }
+i.icon-digest-2 {  text-shadow: 0 0 3px #FFF177; }
+i.icon-digest-3 {  text-shadow: 0 0 3px #FF8D8D; }
+.icon-digest-1:before { content: "\f219";  color: #5BC0DE;} /* "\f0a5" */
+.icon-digest-2:before { content: "\f219";  color: #ECA541;}
+.icon-digest-3:before { content: "\f219"; color: #D53D38;}
+.icon-digest-3:afteer { content: "精"; color: #D53D38;}
+</style><style>
+.deleted div.subject > a { text-decoration: line-through; color: grey !important; }
+.deleted div.message { text-decoration: line-through; color: grey !important; }
+</style><style>
+/*
+.toggle_more {
+	max-height: 100px;
+}
+*/
+.update_log_list a.update_log_history, 
+.update_log_list a.update_log_delete {
+	display: none;
+}
+
+.update_log_list > li:hover {
+	background: var(--gray-300);
+}
+.update_log_list > li:hover > a.update_log_history, 
+.update_log_list > li:hover > a.update_log_delete {
+	display: inline-block;
+}
+
+</style><style>
+.icon-new { width: 26px; height: 12px; display: inline-block; background: url(view/img/new.gif)}
+</style>
+
+</head>
+
+<body>
+	
+	
+<style>
+	.top-banner {
+		height: 100px;
+		overflow: hidden;
+		display: none;
+		background:#0d1e28 url('https://www.kanxue.com/upload/resource/mediapic/202609150959_4N9PVBEK33HPUGA.webp?e=1790330400&s=maIb-8UiBEp2YignJm9ojg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+	@media only screen and (max-width: 780px) {
+		.top-banner-section {
+			display: none;
+		}
+	}
+</style>
+<!-- 顶部广告条 -->
+<!-- 顶部广告条结束 -->	
+
+	<style>
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+#header {
+    /* border-top: 3px solid #0099ee; */
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1), 0 1px rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+}
+
+#header .container {
+    height: 64px;
+    line-height: 64px;
+}
+
+#header .navbar {
+    padding: 0;
+}
+
+#header nav li.nav-item {
+    line-height: 34px;
+}
+
+#header nav a.nav-link {
+    font-size: 16px;
+    color: #757575;
+    font-weight: 500;
+    text-decoration: none;
+}
+#header .login_btn,  #header .reg_btn{
+	font-size: 13px;
+	padding: 4px 16px;
+	
+	font-weight: 500;
+	color: #0099ee;
+	text-decoration: none;
+	border: 1px solid #0099ee;
+}
+#header .reg_btn {
+	color: #fff;
+	background: #0099ee;
+}
+#header nav a.nav-link,
+#header nav .dropdown {
+    padding: 0 1rem;
+}
+
+#header nav a.nav-link:hover {
+    background-color: #F3F3F3;
+}
+
+#header nav li.nav-item.active a {
+    color: #0099ee;
+    font-weight: 600;
+}
+
+#header nav .home_seach_form {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#header nav .dropdown a.dropdown-item:hover {
+    color: #0099ee;
+    text-decoration: none;
+    background-color: #f3f3f3;
+}
+
+.dropup .dropdown-toggle::after {
+    display: none !important;
+}
+
+.bottom-nav {
+    /* display: none; */
+    background-color: #fafafa;
+    box-shadow: 0 -1px rgba(0,0,0,0.1), 0 -2px 10px rgba(0,0,0,0.1);
+}
+.bottom-nav .opts-group {
+    position: relative;
+    display: inline-block;
+    /* padding-top: 6px; */
+    line-height: 20px;
+    color: #9e9e9e;
+    cursor: pointer;
+}
+.bottom-nav .opts-group.active {
+    color: #0099ee;
+}
+
+@media only screen and (min-width: 992px) {
+    .bottom-nav, .header_seach_but {
+        display: none !important;
+    }
+    
+}
+@media only screen and (max-width: 992px) {
+    .nav-logo {
+        margin-right: 0 !important;
+    }
+
+	.nav_user_item {
+		width: 96px;
+	}
+	.nav_user_item .login_btn,  .nav_user_item .reg_btn {
+		padding: 3px 6px !important;
+	}
+}
+
+.seach_li {
+    margin-left: 40px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .seach_li {
+        margin-left: 0px !important;
+        width: 100%;
+        max-width: 120px !important;
+    }
+}
+.dropdown i.angle-down {
+    display: inline-block;
+    transition: transform linear .2s, -webkit-transform linear .2s, -o-transform linear .2s;
+    
+}
+.dropdown.active i.angle-down {
+    transform: rotate(180deg);
+}
+
+</style>
+
+<header id="header">
+    <div class="container" style="padding-right: 15px;padding-left: 15px;">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="/search.htm" class="header_seach_but" style="display:block; width: 96px;"><i class="icon-search" aria-hidden="true"></i></a>
+            <a class="navbar-brand nav-logo" href="/" style="line-height: 0px;" title="看雪安全社区｜专业技术交流与安全研究论坛">
+                <img src="/plugin/kanxue/img/kanxuelogo.png" height="25" alt="看雪安全社区｜专业技术交流与安全研究论坛"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="//www.kanxue.com">首页</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="//www.kanxue.com/course.htm">课程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//www.kanxue.com/question-list.htm">问答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//ctf.kanxue.com">CTF</a>
+                    </li>
+                    <!-- <li class="nav-item  position-relative">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle nav-link px-0" href="#" role="button" id="ctfdropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CTF
+                            </a>
+                            <img class="position-absolute" style="width: 27px; top: -5px; right: -7px; z-index: 3;" src="//passport.kanxue.com/pc/view/img/hot.png" alt="">
+                            <div class="dropdown-menu " aria-labelledby="ctfdropdownMenuLink">
+                                <a class="dropdown-item" style="color: #212529; font-weight: 400;" href="//ctf.kanxue.com">CTF竞赛</a>
+                                <a class="dropdown-item" style="color: #212529; font-weight: 400;" href="//ctf.kanxue.com/itembank.htm">题库</a>
+                                
+                            </div>
+                        </div>
+                    </li> -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="//bbs.kanxue.com">社区</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//job.kanxue.com">招聘</a>
+                    </li>
+                    <li class="nav-item position-relative">
+                            <a class="nav-link" href="//www.kanxue.com/conference.htm" target="_blank">峰会</a>
+                            <!-- <img class="position-absolute" style="width: 27px; top: -5px; right: -7px; z-index: 3;" src="//passport.kanxue.com/pc/view/img/hot.png" alt=""> -->
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle nav-link px-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                发现
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                <!-- <a class="dropdown-item" href="//ctf.kanxue.com">CTF</a> -->
+                                <!-- <a class="dropdown-item" href="//ce.kanxue.com">众测</a> -->
+                                <a class="dropdown-item" href="//www.kanxue.com/rank.htm">排行榜</a>
+                                <a class="dropdown-item" href="//www.kanxue.com/chm.htm">知识库</a>
+                                <a class="dropdown-item" href="//www.kanxue.com/tool.htm">工具下载</a>
+                                <!-- <a class="dropdown-item" href="//www.kanxue.com/conference.htm">峰会</a> -->
+                                <a class="dropdown-item" href="//www.kanxue.com/mrt.htm">看雪20年</a>
+                                <a class="dropdown-item" href="//www.kanxue.com/shop.htm">看雪商城</a>
+                                <a class="dropdown-item " href="//www.kanxue.com/certificate.htm">证书查询</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="seach_li">
+                        <form class="form-inline my-2 my-lg-0 mr-auto" action="search.htm"  id="search_form" style="margin-right: 20px; max-width: 150px;">
+                            <div class="input-group home_seach_form">
+                                <input type="text" class="form-control border-0"  name="keyword" placeholder="社区关键词 回车搜索">
+                                <div class="input-group-append">
+                                    <button class="btn px-2" type="submit" id="button-addon2">
+                                        <i class="icon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="text-right nav_user_item" style="white-space: nowrap;">
+                                <a class="login_btn" href="javascript:;">登录</a>
+                
+                <!-- <a class="login_btn" href="//passport.kanxue.com/user-login.htm">登录</a> -->
+                <a class="reg_btn ml-2" href="//passport.kanxue.com/user-mobile-1.htm">注册</a>
+                            </div>
+            
+        </nav>
+    </div>
+</header>
+<div class="position-fixed w-100 header_fiexd bottom-nav" style="width: 100%; height: 50px; bottom: 0; z-index: 2; background: #fafafa;">
+    <div class="row mx-0 text-center align-items-center" style="height: 50px;">
+        <a href="//www.kanxue.com" class="d-inline-blok col px-0 header_nav_a opts-group " style="max-width: 20%;">
+            <div>
+                <i class="icon-home"></i>
+            </div>
+            <div>
+                首页
+            </div>
+        </a>
+        <a href="//bbs.kanxue.com" class="d-inline-blok col px-0 header_nav_a opts-group active" style="max-width: 20%;">
+            <div>
+                <i class="icon-comments"></i>
+            </div>
+            <div>
+                社区
+            </div>
+        </a>
+        
+        <a href="//www.kanxue.com/course.htm" class="d-inline-blok col px-0 header_nav_a opts-group" style="max-width: 20%;">
+            <div>
+                <i class="icon-book"></i>
+            </div>
+            <div>
+                课程
+            </div>
+        </a>
+        <a href="//job.kanxue.com" class="d-inline-blok col px-0 header_nav_a opts-group" style="max-width: 20%;">
+            <div>
+                <i class="icon-clipboard"></i>
+            </div>
+            <div>
+                招聘
+            </div>
+        </a>
+        
+        <div class=" dropup d-inline-blok col px-0"  style="max-width: 20%;">
+            <a class="dropdown-toggle d-inline-block header_nav_a opts-group" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div>
+
+                    <i class="icon-list"></i>
+                </div>
+                <div>
+                    发现
+                </div>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="//www.kanxue.com/question-list.htm">问答</a>
+
+                <a class="dropdown-item" href="//ctf.kanxue.com">CTF</a>
+                <!-- <a class="dropdown-item" href="//ctf.kanxue.com/itembank.htm">题库</a> -->
+                <!-- <a class="dropdown-item" href="//ce.kanxue.com">众测</a> -->
+                <a class="dropdown-item" href="//www.kanxue.com/rank.htm">排行榜</a>
+                <a class="dropdown-item" href="//www.kanxue.com/chm.htm">知识库</a>
+                <a class="dropdown-item" href="//www.kanxue.com/tool.htm">工具下载</a>
+                <a class="dropdown-item" href="//www.kanxue.com/conference.htm">峰会</a>
+                <a class="dropdown-item" href="//www.kanxue.com/shop.htm">看雪商城</a>
+                <a class="dropdown-item" href="//www.kanxue.com/certificate.htm">证书查询</a>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+
+
+
+		<main id="body"> 
+	
+	<div class="container">
+			
+		<style>
+	.nav_box .active {
+		font-weight: 800;
+		color: #0099ee;
+	}
+	.nav_box {
+		height: 4rem;
+    	line-height: 4rem;
+		border-bottom: 1px solid #F0F0F0;
+		white-space: nowrap;
+		background: #ffffff;
+	}
+	.nav_box a {
+		text-decoration: none;
+	}
+	@media only screen and (max-width: 992px) {
+		header.navbar .icon-edit {
+			display: none;
+		}
+		.nav_box {
+
+			overflow-x: scroll;
+			overflow-y: hidden;
+			
+		}
+	}
+
+	.breadcrumb {
+		background-color: unset !important;
+		border: unset !important;
+		box-shadow: unset !important;
+	}
+	.breadcrumb:hover {
+		background-color: unset !important;
+	}
+	
+	.card>.card-header {
+		color: #161616;
+		text-shadow: unset !important;
+		padding: 0.6rem 1rem;
+		border-bottom: 1px solid #eeeeee;
+		background: #fff !important;
+	}
+	.page-item.active .page-link {
+		background-color: #0099ee;
+		border-color: #0099ee;
+	}
+	.page-link {
+		color: #0099ee;
+	}
+</style>
+<ol class="breadcrumb mb-2">
+	<li class="breadcrumb-item"><a href="./" aria-label="首页"><i class="icon-home"></i> 看雪社区</a></li>
+	<li class="breadcrumb-item"></li>
+	<!--
+	<a href="thread-create-0.htm" role="button" class="btn btn-sm btn-primary" style="float: right;">发新帖</a>
+	-->
+</ol>
+<div class="card px-3">
+	<div class="nav_box">
+		<span style="padding: 0.6rem 1rem;">
+			<a class="" href="new-tid.htm">最新主题</a>
+		</span>
+				<span style="padding: 0.6rem 1rem;">
+			<a class=" " href="new-lastpid.htm">最新回复</a>
+		</span>
+		<span style="padding: 0.6rem 1rem;">
+			<a class=" " href="new-digest.htm">最新精华</a>
+		</span>
+	</div>
+	
+	<div class="card-body pt-0 px-0">
+		<table class="table threadlist">
+			<tbody>
+									
+
+					
+
+
+<tr class="thread " data-tid="292975">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292975.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292975.htm" style="vertical-align: middle;">[原创]starctf oob</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-3 icon-1x mr-3" aria-hidden="true" title="精华"></i>
+										</span>
+						<a href="forum-171.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Pwn</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1075564.htm" style="color: #999999;" class="username ">shark_pro</a>
+				<span class="date " style="color: #999999;">・2026-9-17 22:18</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">3697</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292936">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292936.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292936.htm" style="vertical-align: middle;">[原创]lenovo thinkstation PGX修复与多卡连接</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-163.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">AI 工具与工作流</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-777502.htm" style="color: #999999;" class="username hidden-sm hidden-md">pureGavin</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-12 23:37</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-651413.htm" class="username" style="color: #999999;">@wmsuper</a>
+					<span>2026-9-14 18:21</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">4230</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">1</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292880">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292880.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292880.htm" style="vertical-align: middle;">[原创]Frida 脚本运行时机与Java.perform的原理</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-3 icon-1x mr-3" aria-hidden="true" title="精华"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-998714.htm" style="color: #999999;" class="username hidden-sm hidden-md">mb_peeqldfc</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-7 11:40</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-450922.htm" class="username" style="color: #999999;">@龙飞雪</a>
+					<span>2026-9-17 15:59</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">12462</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">9</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292876">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292876.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292876.htm" style="vertical-align: middle;">[原创]Win11 26H1内核异常体系分析与实验：提前接管用户态、内核态异常，实现无痕Hook、进程保护、反调试，附PoC</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292876-4.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">4</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-3 icon-1x mr-3" aria-hidden="true" title="精华"></i>
+										</span>
+						<a href="forum-41.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">编程技术</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-953262.htm" style="color: #999999;" class="username hidden-sm hidden-md">__Shinn</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-7 01:24</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1094148.htm" class="username" style="color: #999999;">@git_93035N0Facee</a>
+					<span>19小时前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">9937</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">97</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292870">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292870.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292870.htm" style="vertical-align: middle;">[原创] 基于图书管理系统的漏洞复现与代码审计（二）：敏感信息泄露与文件上传</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-151.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">WEB安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1074589.htm" style="color: #999999;" class="username ">Jmn314</a>
+				<span class="date " style="color: #999999;">・2026-9-5 16:11</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">5956</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292866">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292866.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292866.htm" style="vertical-align: middle;">[原创] 某 App 抽取壳的内存脱壳与请求签名逆向</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292866-4.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">4</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1085268.htm" style="color: #999999;" class="username hidden-sm hidden-md">星野安全</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-4 19:12</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1002400.htm" class="username" style="color: #999999;">@mb_jxiwhkvq</a>
+					<span>2小时前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">21117</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">89</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292860">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292860.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292860.htm" style="vertical-align: middle;">[原创]C#实现西门子S71200与S71500控制器优化DB块符号访问</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-4.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">逆向工程</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-991935.htm" style="color: #999999;" class="username ">Coder_shen</a>
+				<span class="date " style="color: #999999;">・2026-9-4 16:58</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">6167</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292853">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292853.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292853.htm" style="vertical-align: middle;">[原创]最强逆向大模型GLM-5.3无道德无限制驱动Frida Stalker绕过银行某梆检测</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-865139.htm" style="color: #999999;" class="username hidden-sm hidden-md">x1ny</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-3 21:47</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-756274.htm" class="username" style="color: #999999;">@JZegost</a>
+					<span>1天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">24401</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">15</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292846">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292846.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292846.htm" style="vertical-align: middle;">[原创]一台&quot;锁死&quot;的 Pixel 7 自救记：把 GhostLock 内核漏洞移植到真机 root</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292846-3.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">3</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-735880.htm" style="color: #999999;" class="username hidden-sm hidden-md">世界美景</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-3 16:10</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1093864.htm" class="username" style="color: #999999;">@git_36387win4556</a>
+					<span>4天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">22577</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">55</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292836">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292836.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292836.htm" style="vertical-align: middle;">[分享] IDA9.4 + MCP 配置教程</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-163.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">AI 工具与工作流</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1041147.htm" style="color: #999999;" class="username hidden-sm hidden-md">mb_sqopfzgf</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-2 14:06</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-935278.htm" class="username" style="color: #999999;">@yuechu</a>
+					<span>2026-9-15 16:08</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">20440</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">12</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292825">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292825.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292825.htm" style="vertical-align: middle;">[原创]VT调试器原理揭秘--DebugPort转移与重建调试体系</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292825-5.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">5</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-4.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">逆向工程</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1055387.htm" style="color: #999999;" class="username hidden-sm hidden-md">Qmeimei10086</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-1 22:04</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-876694.htm" class="username" style="color: #999999;">@Mordecai丶</a>
+					<span>2天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">9543</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">125</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292820">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292820.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292820.htm" style="vertical-align: middle;">[原创] 关于ciscn决赛第二天 ctfpwn01 vm 题目的简析</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-3 icon-1x mr-3" aria-hidden="true" title="精华"></i>
+										</span>
+						<a href="forum-171.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Pwn</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1002422.htm" style="color: #999999;" class="username hidden-sm hidden-md">一叶梦花</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-9-1 08:23</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-996454.htm" class="username" style="color: #999999;">@mb_iiowbiot</a>
+					<span>6天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">4331</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">1</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292814">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292814.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292814.htm" style="vertical-align: middle;">[原创]Frida 整体启动逻辑</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-998714.htm" style="color: #999999;" class="username hidden-sm hidden-md">mb_peeqldfc</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-31 03:32</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1050037.htm" class="username" style="color: #999999;">@focaccia</a>
+					<span>2026-8-31 16:32</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">16352</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">8</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292809">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292809.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292809.htm" style="vertical-align: middle;">[原创] 兼容全系统的DWM绘制</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-4.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">逆向工程</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1019351.htm" style="color: #999999;" class="username hidden-sm hidden-md">mb_pelomxiq</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-30 15:23</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1026334.htm" class="username" style="color: #999999;">@Peyriat</a>
+					<span>2天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">1496</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">6</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292808">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292808.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292808.htm" style="vertical-align: middle;">[原创]安卓驱动跳板 PTE 映射读写物理内存</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292808-2.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">2</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-161.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Android安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1081845.htm" style="color: #999999;" class="username hidden-sm hidden-md">gongchuang</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-30 10:39</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-823551.htm" class="username" style="color: #999999;">@西瓜帅</a>
+					<span>2026-9-8 13:54</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">13701</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">37</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292805">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292805.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292805.htm" style="vertical-align: middle;">[分享]IDAPro v9.4.260714 汉化补丁修正错误（再次修复字体显示问题，调试器使用问题）</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-10.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">安全工具</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1067592.htm" style="color: #999999;" class="username hidden-sm hidden-md">xiaoyu777</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-29 17:53</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-302789.htm" class="username" style="color: #999999;">@qqykx</a>
+					<span>2026-9-8 09:43</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">621</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">1</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292802">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292802.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292802.htm" style="vertical-align: middle;">[原创]当我们用 SFT 种下一个后门，模型里到底发生了什么</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-168.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">AI 自身安全</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-324967.htm" style="color: #999999;" class="username ">dirge</a>
+				<span class="date " style="color: #999999;">・2026-8-28 20:07</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">473</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292795">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292795.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292795.htm" style="vertical-align: middle;">[原创]OLLVM混淆+VS 2019/22 Windows环境搭建</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292795-3.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">3</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-1 icon-1x mr-3" aria-hidden="true" title="关注"></i>
+										</span>
+						<a href="forum-4.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">逆向工程</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-968981.htm" style="color: #999999;" class="username hidden-sm hidden-md">Hook你的心跳</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-28 05:33</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1090062.htm" class="username" style="color: #999999;">@mb_csecqjis</a>
+					<span>12小时前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">4703</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">63</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292791">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292791.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292791.htm" style="vertical-align: middle;">[原创]windows内核免杀学习1-不调 API 找 ntdll 基址</a>
+						
+			
+
+									
+						
+			
+
+
+					
+			<a href="thread-292791-2.htm" title="最后一页">
+				<span class="icon-copy" style="font-size: 12px; color: #999; margin-left: 4px;"></span><span style="font-size: 12px; margin-left: 2px; color: #999;">2</span>
+			</a>
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-41.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">编程技术</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-1051882.htm" style="color: #999999;" class="username hidden-sm hidden-md">aln1lam</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-27 17:58</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-1012358.htm" class="username" style="color: #999999;">@mb_uvddclvn</a>
+					<span>3天前</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">4475</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">32</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292789">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292789.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292789.htm" style="vertical-align: middle;">[原创]ret2shellcode 浅析</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-171.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">Pwn</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-775120.htm" style="color: #999999;" class="username ">王嘟嘟</a>
+				<span class="date " style="color: #999999;">・2026-8-27 12:00</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">1897</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292760">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292760.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292760.htm" style="vertical-align: middle;">[Original] # kctf2026 Question 10 — Mao Hour · Dawn Breaks</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-787693.htm" style="color: #999999;" class="username ">wx_平淡无奇</a>
+				<span class="date " style="color: #999999;">・2026-8-24 10:14</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">3089</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292753">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292753.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292753.htm" style="vertical-align: middle;">KCTF  第十题：卯时·曦光初现 - PWN Writeup</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-757881.htm" style="color: #999999;" class="username ">yuzhouheike</a>
+				<span class="date " style="color: #999999;">・2026-8-24 02:56</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">3205</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292748">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292748.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292748.htm" style="vertical-align: middle;">[原创] KCTF260A 第十题 曦光初现 Writeup</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-463990.htm" style="color: #999999;" class="username hidden-sm hidden-md">HHHso</a>
+				<span class="date hidden-sm hidden-md" style="color: #999999;">・2026-8-23 18:18</span>
+								<span style="color: #999999;">
+					<span class="mx-2"><i class="icon-long-arrow-left" aria-hidden="true" style="color: #d6d6d6;"></i></span>
+					<a href="user-home-705114.htm" class="username" style="color: #999999;">@yber</a>
+					<span>2026-8-25 17:50</span>
+				</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">4229</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">1</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292745">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292745.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292745.htm" style="vertical-align: middle;">KCTF2026: 第十题：卯时·曦光初现</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-866818.htm" style="color: #999999;" class="username ">Magic丶</a>
+				<span class="date " style="color: #999999;">・2026-8-23 16:54</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">2706</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292744">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292744.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292744.htm" style="vertical-align: middle;">[原创]KCTF2026 第十题：卯时·曦光初现（AI）</a>
+						
+			
+
+						<i class="icon-paperclip text-grey"></i>			
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-846772.htm" style="color: #999999;" class="username ">Ally Switch</a>
+				<span class="date " style="color: #999999;">・2026-8-23 16:12</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">2701</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292740">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292740.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292740.htm" style="vertical-align: middle;">[分享]2026 KCTF 第十题「卯时·曦光初现」(Writeup · Pwn)</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-156779.htm" style="color: #999999;" class="username ">correy</a>
+				<span class="date " style="color: #999999;">・2026-8-23 15:15</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">1617</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292739">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292739.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292739.htm" style="vertical-align: middle;">[原创] 第十题：卯时·曦光初现  WP</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-941605.htm" style="color: #999999;" class="username ">mxym_</a>
+				<span class="date " style="color: #999999;">・2026-8-23 14:43</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">1527</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+<tr class="thread " data-tid="292738">
+		<td class="td-subject px-3">
+		<div class="subject" style="margin-bottom: 0.5rem;">
+			<a href="thread-292738.htm" style="vertical-align: middle;" target="_blank" title="新窗口打开">
+							<span class="icon-xiuno icon-post-grey"></span>
+						</a>
+ 
+			
+		
+						
+						
+			
+					
+			<a href="thread-292738.htm" style="vertical-align: middle;">[原创] 看雪·2026 KCTF  第十题：卯时·曦光初现</a>
+						
+			
+
+									
+						
+			
+
+
+			
+			<span>
+												<i class="icon-digest-2 icon-1x mr-3" aria-hidden="true" title="优秀"></i>
+										</span>
+						<a href="forum-37.htm" class="small hidden-sm hidden-md float-right" style="border: 1px solid #e2e2e2; color: #9B9B9B; border-radius: 20px; padding: 1px 12px; margin-left: 4px;">CTF对抗</a>
+						
+
+			
+			
+		</div>
+
+		<div class="row small mx-0 mb-2">
+			<div class="col px-0">
+				<a href="user-home-925585.htm" style="color: #999999;" class="username ">mb_mgodlfyn</a>
+				<span class="date " style="color: #999999;">・2026-8-23 14:17</span>
+							</div>
+			<div class="text-right" style="color: #999999;">
+				<div class="hidden-sm hidden-md mr-2" style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732758196414" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12069" width="12" height="12"><path d="M947.949268 880.889756H76.050732c-18.481951 0-33.592195-14.985366-33.592195-33.592195V176.577561c0-18.481951 14.985366-33.592195 33.592195-33.592195 18.481951 0 33.592195 14.985366 33.592195 33.592195v637.252683h838.431219c18.481951 0 33.592195 14.985366 33.592195 33.592195-0.124878 18.481951-15.110244 33.467317-33.717073 33.467317z m0 0" fill="#797c80" p-id="12070"></path><path d="M210.54439 680.085854c-8.616585 0-17.108293-3.246829-23.601951-9.740488-13.112195-13.112195-13.112195-34.341463-0.124878-47.453659l167.336585-168.085853c6.243902-6.36878 14.860488-9.865366 23.72683-9.865366s17.482927 3.496585 23.726829 9.865366l110.392195 110.392195L823.69561 253.502439c13.112195-13.112195 34.341463-13.112195 47.453658 0s13.112195 34.341463 0 47.453659L535.726829 636.378537c-13.112195 13.112195-34.341463 13.112195-47.453658 0l-110.392195-110.392196-143.609756 144.234147c-6.618537 6.493659-15.110244 9.865366-23.72683 9.865366z m0 0" fill="#797c80" p-id="12071"></path></svg>
+					<span style="vertical-align: middle;">1475</span>
+				</div>
+				<div style="text-align: left; display: inline-block;">
+					<svg style="vertical-align: middle;" t="1732773925967" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2077" width="14" height="14"><path d="M191.825 155.411h639.133c31.777 0 60.641 12.979 81.549 33.885 20.908 20.908 33.886 49.78 33.886 81.547v386.981c0 31.773-12.978 60.642-33.886 81.55s-49.771 33.881-81.549 33.881H617.095c-51.358 65.264-86.005 97.265-115.505 96.842-34.341-0.48-51.522-33.026-64.004-96.842h-245.76c-31.77 0-60.641-12.973-81.547-33.881-20.908-20.908-33.885-49.776-33.885-81.55v-386.98c0-31.767 12.977-60.639 33.885-81.547 20.905-20.907 49.776-33.886 81.546-33.886zM321.3 397.295h4.778c26.955 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005H321.3c-26.955 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.044-48.999 48.999-48.999z m370.743 0h4.777c26.956 0 48.999 22.043 48.999 48.999v0.006c0 26.955-22.043 49.005-48.999 49.005h-4.777c-26.955 0-48.998-22.05-48.998-49.005v-0.006c0-26.955 22.043-48.999 48.998-48.999z m-188.393 0h4.779c26.953 0 48.997 22.043 48.997 48.999v0.006c0 26.955-22.044 49.005-48.997 49.005h-4.779c-26.953 0-48.999-22.05-48.999-49.005v-0.006c0-26.955 22.046-48.999 48.999-48.999z m327.308-190.478H191.825c-17.576 0-33.59 7.215-45.2 18.827-11.614 11.612-18.827 27.626-18.827 45.2v386.981c0 17.58 7.213 33.589 18.827 45.202 11.61 11.614 27.625 18.825 45.2 18.825H480.773l3.555 21.583c8.232 49.979 13.602 75.405 17.866 75.462 11.309 0.163 36.949-28.559 82.164-87.002l7.764-10.043h238.836c17.583 0 33.592-7.211 45.202-18.825 11.613-11.613 18.828-27.622 18.828-45.202V270.844c0-17.574-7.215-33.588-18.828-45.2-11.61-11.612-27.619-18.827-45.202-18.827z" fill="#797c80" p-id="2078"></path></svg>
+					<span style="vertical-align: middle;">0</span>
+				</div>
+			</div>
+		</div>
+	</td>
+
+</tr>
+				</tbody>
+		</table>
+	</div>
+</div>
+
+
+<nav class="text-center" style="overflow: hidden;"><ul class="pagination"><li class="page-item active"><a href="new--1" class="page-link">1</a></li><li class="page-item"><a href="new--2" class="page-link">2</a></li><li class="page-item"><a href="new--3" class="page-link">3</a></li><li class="page-item"><a href="new--4" class="page-link">4</a></li><li class="page-item"><a href="new--5" class="page-link">5</a></li><li class="page-item"><a href="new--6" class="page-link">6</a></li><li class="page-item"><a href="new--7" class="page-link">7</a></li><li class="page-item"><a href="new--8" class="page-link">8</a></li><li class="page-item"><a href="new--9" class="page-link">9</a></li><li class="page-item"><a href="new--10" class="page-link">10</a></li><li class="page-item"><a href="new--200" class="page-link">... 200</a></li><li class="page-item"><a href="new--2.htm" class="page-link">▶</a></li></ul></nav>
+
+
+</div>
+
+</main>
+
+<div class="container px-0 pb-3 bbs_footer_start_column">
+    <div class="row mx-0 bbs_footer_at_column hidden-sm hidden-md" style="text-align: center; height: 76px;">
+        <div class="col-md-6 px-0" style="height: 100%;">
+            <a href="https://meet.kanxue.com/kxmeet-19.htm" style="height: 100%;" target="_blank">
+                <!-- <p></p > -->
+                <img src="https://www.kanxue.com/upload/resource/mediapic/202609151823_RWW8KEZQ9R984MM.webp?e=1790330400&s=ZDi1IP7wahtftN9_Hw-n0g" width="100%" height="100%">
+            </a>
+        </div>
+        <div class="col-md-6 px-0" style="height: 100%;">
+            <a href="https://bbs.kanxue.com/thread-223326.htm" style="height: 100%;" target="_blank">
+                <!-- <p></p > -->
+                <img src="https://www.kanxue.com/upload/resource/mediapic/202510281550_CDXD88ZBBVP39BR.png?e=1790330400&s=QU4ToTxWku5xRHOUXXEqbg" width="100%" height="100%">
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer id="footer" class="py-3" style="background: #3b4348; color: #9ba4aa; height: auto;">
+	<div class="container">
+		<div class="row text-muted small my-3 mx-0" id="web_base_company_information">
+			<div class="col-12 col-md-6">
+				©2000-2026 看雪论坛 | Based on <a href="http://bbs.xiuno.com/" target="_blank"
+					class="text-muted">Xiuno BBS</a>  <br>
+				域名：<a href="https://www.yunaq.com/" target="_blank" class="text-muted">加速乐</a> |
+				
+				SSL证书：<a href="https://www.trustasia.com/trustasia" target="_blank" class="text-muted">亚洲诚信</a> |
+				<a href="http://dun.163.com/?from=kanxue_DDoS_2018&hmsr=kanxue " target="_blank"
+					class="text-muted">安全网易易盾</a>
+
+			</div>
+			<div class="col-12 col-md-6 pt-2 pt-md-0 text-md-right">
+				
+
+				<span><a class="text-muted" href="https://www.kanxue.com/app-download.htm">看雪播放器</a></span> |
+				<span>公众号：ikanxue</span> |
+				<a class="text-muted" href="https://www.kanxue.com/user-online_sendmsg.htm">联系我们</a> |
+								<a class="text-muted" href="https://www.kanxue.com/article-detail-56.htm">关于我们</a> </br>
+				Processed: <b>0.007</b>s, SQL:
+				<b>5</b> / <a class="text-muted" href="http://beian.miit.gov.cn/"
+					target="_blank">沪ICP备2022023406号</a> / <a class="text-muted" href="http://www.beian.gov.cn/portal/registerSystemInfo?domainname=%27pediy.com%27&recordcode=31011502006611" target="_blank">沪公网安备 31011502006611号</a>
+
+			</div>
+		</div>
+		<!-- <div style="max-height: 100px; overflow-y:auto;">
+					</div> -->
+	</div>
+</footer>
+
+
+
+<!--[if lt IE 9]>
+	<script>window.location = 'browser.htm';</script>
+	<![endif]-->
+
+
+
+<style>
+@keyframes slideInLeft {
+  0% { transform: translateX(0); } /* 初始状态，元素处于最右侧 */
+  100% { transform: translateX(-100%); } /* 结束状态，元素移到原点位置 */
+}
+.changeThemeBox {
+	border-radius: 5px;
+	box-shadow: 0 1px 2px 0 #eee;
+	overflow: hidden; cursor: pointer; position: fixed; bottom: 160px; right: 10px; z-index: 99;width: 60px; height: 60px;
+}
+.changeThemeBox .changeTheme, 
+.changeThemeBox .changeTheme1,
+.act_go_top .go_top, 
+.act_go_top .go_top1 {
+	transition: all 300ms;
+}
+.changeThemeBox:hover .changeTheme,
+.changeThemeBox:hover .changeTheme1,
+.act_go_top:hover .go_top, 
+.act_go_top:hover .go_top1
+ {
+  transform: translateX(-100%);
+}
+
+</style>
+<div class="act_go_top" style="overflow: hidden; cursor: pointer; border-radius: 5px; box-shadow: 0 1px 2px 0 #eee;position: fixed; bottom: 80px; right: 10px; z-index: 99; width: 60px; height: 60px; display: none;">
+	<a class="go_top" href="javascript:;"
+		style="width: 60px; height: 60px;display: flex;
+		align-items: center;
+		justify-content: center; outline: none; text-align: center; color: #85888b; background: #fff;"
+		title="切换主题">
+		<svg t="1709278113659" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2327" width="32" height="32"><path d="M4.621 514.463h98.188v327.301h98.188v-327.301h98.188v-65.449h-294.563z" fill="#3C3D3D" p-id="2328"></path><path d="M528.209 154.51l-163.446 196.347 327.273-0.219z" fill="#3C3D3D" p-id="2329"></path><path d="M331.907 841.765h327.286v-392.75h-327.286v392.75zM430.095 514.463h130.912v261.823h-130.912v-261.823z" fill="#3C3D3D" p-id="2330"></path><path d="M691.933 449.015v392.75h98.188v-163.651h229.1v-229.1h-327.286zM921.033 612.652h-130.912v-98.188h130.912v98.188z" fill="#3C3D3D" p-id="2331"></path></svg>
+	</a>
+	<a class="go_top1" href="javascript:;"
+		style="position: relative; top: -60px; right: -60px; width: 60px; height: 60px;display: flex;
+		align-items: center;
+		justify-content: center; outline: none; text-align: center; color: #fff; background: #0099ee;"
+		title="切换主题">
+		返回<br/>顶部
+	</a>
+</div>
+
+</body>
+
+</html>
+
+<script src="/lang/zh-cn/bbs.js?1.5"></script>
+<script src="/view/js/jquery-3.1.0.js?1.5"></script>
+<script src="/view/js/popper.js?1.5"></script>
+<script src="/view/js/bootstrap.js?1.5"></script>
+<script src="/view/js/xiuno.js?1790330355"></script>
+<script src="/view/js/storagePlus.js"></script>
+<script src="//www.kanxue.com/view/js/bootstrap-plugin.js?1.5"></script>
+<script src="/view/js/async.js?1.5"></script>
+<script src="/view/js/form.js?1.5"></script>
+<script src="https://passport.kanxue.com/xiunoui/js_md5.js"></script>
+<script src="//cstaticdun.126.net/load.min.js"></script>
+<script src="//www.kanxue.com/view/js_bs4_beta3/logininPlug.js"></script>
+<script>
+	$(function(){
+		$(".login_btn").on("click",function(){
+			$(".kx_login_plugbox").show()
+		})
+	})
+</script>
+<script>
+	// 用于个人中心 判断路由 center ，还是 pm
+	var debug = DEBUG = 0;
+	var url_rewrite_on = 1;
+	var forumarr = [
+    {
+        "name": "AI 助力安全",
+        "fid": 170,
+        "status": false
+    },
+    {
+        "name": "AI 自身安全",
+        "fid": 168,
+        "status": false
+    },
+    {
+        "name": "AI 工具与工作流",
+        "fid": 163,
+        "status": false
+    },
+    {
+        "name": "AI 平台与数据安全",
+        "fid": 123,
+        "status": false
+    },
+    {
+        "name": "Android安全",
+        "fid": 161,
+        "status": false
+    },
+    {
+        "name": "IoT安全",
+        "fid": 128,
+        "status": false
+    },
+    {
+        "name": "iOS安全",
+        "fid": 166,
+        "status": false
+    },
+    {
+        "name": "HarmonyOS",
+        "fid": 178,
+        "status": false
+    },
+    {
+        "name": "逆向工程",
+        "fid": 4,
+        "status": false
+    },
+    {
+        "name": "编程技术",
+        "fid": 41,
+        "status": false
+    },
+    {
+        "name": "加壳脱壳",
+        "fid": 88,
+        "status": false
+    },
+    {
+        "name": "二进制漏洞",
+        "fid": 150,
+        "status": false
+    },
+    {
+        "name": "CTF对抗",
+        "fid": 37,
+        "status": false
+    },
+    {
+        "name": "Pwn",
+        "fid": 171,
+        "status": false
+    },
+    {
+        "name": "WEB安全",
+        "fid": 151,
+        "status": false
+    },
+    {
+        "name": "密码应用",
+        "fid": 132,
+        "status": false
+    },
+    {
+        "name": "安全工具",
+        "fid": 10,
+        "status": false
+    },
+    {
+        "name": "开源项目",
+        "fid": 95,
+        "status": false
+    },
+    {
+        "name": "原创软件",
+        "fid": 172,
+        "status": false
+    },
+    {
+        "name": "外文翻译",
+        "fid": 32,
+        "status": false
+    },
+    {
+        "name": "求助问答",
+        "fid": 97,
+        "status": false
+    },
+    {
+        "name": "茶余饭后",
+        "fid": 45,
+        "status": false
+    },
+    {
+        "name": "安全资讯",
+        "fid": 162,
+        "status": false
+    },
+    {
+        "name": "招聘专区",
+        "fid": 47,
+        "status": false
+    },
+    {
+        "name": "职业生涯",
+        "fid": 137,
+        "status": false
+    },
+    {
+        "name": "社区版务",
+        "fid": 2,
+        "status": false
+    },
+    {
+        "name": "回收站",
+        "fid": 57,
+        "status": false
+    }
+];
+	var fid = 0;
+	var uid = 0;
+	var gid = 0;
+	$('[data-toggle="tooltip"]').tooltip();
+	$('#search_form > input').on('click', function () {
+		return false;
+	});
+</script>
+
+<script src="/view/js/bbs.js?1.5"></script>
+
+<script>
+// 版主管理：精华
+$('.mod-button button.digest').on('click', function() {
+	var modtid = $('input[name="modtid"]').checked();
+	if(modtid.length == 0) return $.alert(lang.please_choose_thread);
+	var radios = xn.form_radio('digest', {"0": "取消精华", "1": "关注","2": "优秀", "3": "精华"});
+	var radios2 = xn.form_radio('skill_type', {"0":"无", "7": "Reverse", "1": "PWN","2": "App", "3": "Web", "4": "IoT", "5":"Develop", "6":"MISC"});
+	$.confirm("设置主题为精华", function() {
+		var tids = xn.implode('_', modtid);
+		var digest = $('input[name="digest"]').checked();
+		var skill_type = $('input[name="skill_type"]').checked();
+		var postdata = {digest: digest, skill_type:skill_type};
+		
+		$.xpost(xn.url('mod-digest-'+tids), postdata, function(code, message) {
+
+			if(code != 0) return $.alert(message);
+			// $.alert(message).delay(1000).location('');
+
+			if(digest != 0){
+				if(window.confirm('设置成功，是否入库?')){
+					$.alert('请稍等文库打开中...');
+					$('.chm_in').trigger('click');
+				}else{
+					location.reload();
+				}
+				// $.confirm("设置成功，是否入库", function() {
+					
+				// 	$.alert('设置成功，请稍等文库打开中...');
+
+				// });
+				// $.alert('设置成功，请稍等文库打开中...');
+				// $('.chm_in').trigger('click');
+			}else{
+				$.alert(message).delay(1000).location('');
+			}
+
+
+		});
+	}, {'body': '<p>'+"精华等级"+'：'+radios+'<br>技能方向：'+radios2+'</p>'});
+})
+</script><script>
+/**
+function xn_read_unread(tids, tid) {
+	
+	// 当前时间
+	var time = xn.time();
+	
+	// 多长时间内的主题为最新主题
+	var time_range = 86400 * 3;
+	
+	// 三天内的 tids
+	var recent_tids = $.pdata('recent_tids') || {};
+	
+	// 已读的 tids
+	var view_tids = $.pdata('view_tids') || {};
+	// 提取列表页的 tid
+	function fetch_recent_tids(tids) {
+		var changed = false;
+		$.each(tids, function(tid, last_date) {
+			if(time - last_date < time_range) {
+				recent_tids[tid] = last_date;
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('recent_tids', recent_tids);
+	}
+	
+	// 清理最近的 tid
+	function gc_recent_tids() {
+		var changed = false;
+		$.each(recent_tids, function(tid, last_date) {
+			if(time - last_date > time_range) {
+				delete recent_tids[tid];
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('recent_tids', recent_tids);
+	}
+	
+	function gc_view_tids() {
+		var changed = false;
+		$.each(view_tids, function(tid, last_date) {
+			if(!recent_tids[tid]) {
+				delete view_tids[tid];
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('view_tids', view_tids);
+	}
+	
+	function save_view_tid(tid) {
+		if(!recent_tids[tid]) return;
+		view_tids[tid] = time;
+		$.pdata('view_tids', view_tids);
+	}
+	
+	if(tids) {
+		fetch_recent_tids(tids);
+		gc_recent_tids();
+		//gc_view_tids();
+	}
+	if(tid) save_view_tid(tid);
+	
+	// 三天内的主题标记为已读
+	
+	// 遍历主题列表，标记最近的，并且未读的为加粗
+
+	$('.thread').each(function() {
+		var jthis = $(this);
+		var tid = jthis.attr('tid') || jthis.data('tid');
+		if(recent_tids[tid] && recent_tids[tid] > xn.intval(view_tids[tid])) {
+			//jthis.find('div.subject').addClass('font-weight-bold');
+			jthis.find('div.subject').append('<span class="icon-new"></span>');
+			jthis.find('span.icon-post-grey').removeClass('icon-post-grey').addClass('icon-post-blue');
+			// jthis.find('.icon-new').on('click',function(){
+
+			// 	var tid = jthis.data('tid');
+			// 	var pages = jthis.data('pages');
+			// 	if(pages == 0 || pages == 1) {
+			// 		window.open('thread-'+tid+'.htm')
+			// 	} else {
+			// 		window.open('thread-'+tid+'-'+pages+'.htm')
+			// 	}
+				
+			// })
+		}
+	});
+
+	// 首页未读
+	$('.bbs_home_page_row_div').each(function() {
+		var jthis = $(this);
+		var tid = jthis.attr('tid') || jthis.data('tid');
+		if(recent_tids[tid] && recent_tids[tid] > xn.intval(view_tids[tid])) {
+			jthis.find('span.icon-post-grey').removeClass('icon-post-grey').addClass('icon-post-blue');
+		}
+	});
+	// 列表页未读
+	// ···
+	// ···
+	// ···
+}
+*/
+
+function xn_read_unread(tids, tid) {
+	// 当前时间
+	var time = xn.time();
+	// 多长时间内的主题为最新主题
+	var time_range = 86400 * 3;
+	// 三天内的 tids
+	var recent_tids = $.pdata('recent_tids') || {};
+	// 已读的 tids
+	var view_tids = $.pdata('view_tids') || {};
+	
+	// 提取列表页的 tid
+	function fetch_recent_tids(tids) {
+		var changed = false;
+		$.each(tids, function(tid, last_date) {
+			if(time - last_date < time_range) {
+				recent_tids[tid] = last_date;
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('recent_tids', recent_tids);
+	}
+	
+	// 清理最近的 tid
+	function gc_recent_tids() {
+		var changed = false;
+		$.each(recent_tids, function(tid, last_date) {
+			if(time - last_date > time_range) {
+				delete recent_tids[tid];
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('recent_tids', recent_tids);
+	}
+	
+	function gc_view_tids() {
+		var changed = false;
+		$.each(view_tids, function(tid, last_date) {
+			if(!recent_tids[tid]) {
+				delete view_tids[tid];
+				changed = true;
+			}
+		});
+		if(changed) $.pdata('view_tids', view_tids);
+	}
+	
+	function save_view_tid(tid) {
+		if(!recent_tids[tid]) return;
+		view_tids[tid] = time;
+		$.pdata('view_tids', view_tids);
+	}
+	
+	if(tids) {
+		fetch_recent_tids(tids);
+		gc_recent_tids();
+		//gc_view_tids();
+	}
+	if(tid) save_view_tid(tid);
+	
+	// 遍历主题列表
+	$('.thread').each(function() {
+		var jthis = $(this);
+		var tid = jthis.attr('tid') || jthis.data('tid');
+		var last_update_time = recent_tids[tid];
+		var last_view_time = xn.intval(view_tids[tid]);
+		
+		// 不在最近主题内，跳过
+		if(!last_update_time) return;
+		
+		// 是否查看过
+		var has_viewed = !!last_view_time;
+		
+		// 是否有更新
+		var has_new = last_update_time > last_view_time;
+		
+		// 没有新内容：保持灰色，不加 new
+		if(!has_new) return;
+		
+		// 有更新：都加 new（避免重复添加）
+		if(!jthis.find('div.subject .icon-new').length) {
+			jthis.find('div.subject').append('<span class="icon-new"></span>');
+		}
+		
+		// 未查看：保持原本逻辑，灰变蓝
+		if(!has_viewed) {
+			jthis.find('span.icon-post-grey').removeClass('icon-post-grey').addClass('icon-post-blue');
+		}
+		
+		// 已查看后又更新：只加 new，图标保持灰色，不处理
+	});
+	
+	// 首页未读
+	$('.bbs_home_page_row_div').each(function() {
+		var jthis = $(this);
+		var tid = jthis.attr('tid') || jthis.data('tid');
+		var last_update_time = recent_tids[tid];
+		var last_view_time = xn.intval(view_tids[tid]);
+		
+		// 不在最近主题内，跳过
+		if(!last_update_time) return;
+		
+		// 是否查看过
+		var has_viewed = !!last_view_time;
+		
+		// 是否有更新
+		var has_new = last_update_time > last_view_time;
+		
+		// 没有新内容：保持灰色
+		if(!has_new) return;
+		
+		// 未查看：保持原逻辑，灰变蓝
+		if(!has_viewed) {
+			jthis.find('span.icon-post-grey').removeClass('icon-post-grey').addClass('icon-post-blue');
+		}
+		
+		// 已查看后又更新：图标保持灰色，不处理
+	});
+	
+	// 列表页未读
+	// ···
+	// ···
+	// ···
+}
+</script>
+
+<script>
+	$(function () {
+		setTimeout(function () {
+			$(".bbs_home_page_three_col .small_logo").each(function (index, element) {
+
+				if ($(element).children("a").length == 0) {
+					$(".bbs_home_page_three_col .bbs_home_page_row_div").eq(index).children(
+						'div:first-child').removeClass("col-lg-8").addClass("col-lg-9");
+					$(".bbs_home_page_three_col .bbs_home_page_row_div").eq(index).children(
+						'div:last-child').removeClass("col-lg-4").addClass("col-lg-3");
+					$(".bbs_home_page_three_col .bbs_home_page_row_div").eq(index).children(
+						'div:first-child').children("span").css("width", "19rem");
+				}
+			})
+		}, 2000);
+
+
+		if (self != top) {
+			$('#header').hide();
+			$('#nav2').hide();
+			$('#footer').hide();
+		}
+
+		// 导航
+		var browser_width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		if (browser_width <= 992) {
+			var new_p = 0,
+				start_scrollTop = 0;
+			$(window).scroll(function (e) {
+				new_p = $(this).scrollTop();
+
+				if (start_scrollTop < new_p) { //下滚  
+					$('.header_fiexd').css("display", "none");
+				} else { //上滚  
+					$('.header_fiexd').css("display", "block");
+				}
+				setTimeout(function () {
+					start_scrollTop = new_p;
+				}, 0);
+			});
+		}
+		// 切换主题
+		$('.changeThemeBox').click(function () {
+			var theme = $(this).data('theme');
+			if(theme != 1) {
+				theme = 1
+			} else {
+				theme = 0
+			}
+			$.xpost('/user-setting_style.htm', {style:theme}, function (code, message) {
+				if (code == 0) {
+					$.msg(message);
+					setTimeout(function(){
+						window.location.href="/"
+					},1000)
+				}
+			})
+		});
+		// 返回顶部
+		if ($(window).scrollTop() >= 500) {
+			$('.act_go_top').fadeIn(300);
+		} else {
+			$('.act_go_top').fadeOut(300);
+		}
+		$(window).scroll(function () {
+			
+			if ($(window).scrollTop() >= 500) {
+				$('.act_go_top').fadeIn(300);
+			} else {
+				$('.act_go_top').fadeOut(300);
+			}
+		});
+
+		$('.act_go_top').click(function () {
+			$('html,body').animate({
+				scrollTop: '0px'
+			}, 100);
+		});
+
+		var d = new Date();
+		var session_interval = d.getTime() - $.pdata('top-banner-session');
+
+		if (session_interval > 3600000) {
+			$.pdata('top-banner', 0);
+		}
+		if ($.pdata('top-banner') == 1) {
+			$(".top-banner").hide();
+		} else {
+			$(".top-banner").slideDown();
+		}
+		$(".top-banner-section .closeBanner").on("click", function () {
+
+			$.pdata('top-banner', 1);
+			$.pdata('top-banner-session', d.getTime());
+			$(".top-banner").animate({
+				height: '0'
+			})
+		})
+
+
+		// 退出登录
+		$.xgpost = function (url, postdata, callback, progress_callback) {
+			if ($.isFunction(postdata)) {
+				callback = postdata;
+				postdata = null;
+			}
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: postdata,
+				dataType: 'text',
+				timeout: 6000000,
+				xhrFields: {
+					withCredentials: true
+				},
+				progress: function (e) {
+					if (e.lengthComputable) {
+						if (progress_callback) progress_callback(e.loaded / e.total * 100);
+						//console.log('progress1:'+e.loaded / e.total * 100 + '%');
+					}
+				},
+				success: function (r) {
+					if (!r) return callback(-1, 'Server Response Empty!');
+					var s = xn.json_decode(r);
+					if (!s || s.code === undefined) return callback(-1,
+						'Server Response Not JSON：' + r);
+					if (s.code == 0) {
+						return callback(0, s.message);
+						//系统错误
+					} else if (s.code < 0) {
+						return callback(s.code, s.message);
+					} else {
+						return callback(s.code, s.message);
+					}
+				},
+				error: function (xhr, type) {
+					if (type != 'abort' && type != 'error' || xhr.status == 403) {
+						return callback(-1000, "xhr.responseText:" + xhr.responseText + ', type:' +
+							type);
+					} else {
+						return callback(-1001, "xhr.responseText:" + xhr.responseText + ', type:' +
+							type);
+						console.log("xhr.responseText:" + xhr.responseText + ', type:' + type);
+					}
+				}
+			});
+		};
+		$('.nav_user_item .logout').click(function () {
+			$.xpost('/user-logout.htm', {}, function (code, message) {
+				if (code == 0) {
+					$.msg(message);
+					$.xgpost('//passport.kanxue.com/user-logout.htm', "", function (code, message) {
+
+						setTimeout(function () {
+							location.reload();
+						}, 800)
+
+					})
+				}
+			})
+		});
+	});
+</script>
+
+<script>
+	(function () {
+		var islogin = '0';
+		if (islogin == 0) return;
+		var pm_number = "/user-newpm.htm";
+		$.xget(pm_number, function (code, message) {
+			var pm_number = $(".pm_number");
+			var sysm_number = $(".system_message_number");
+			if (code == 0) {
+				var newpms = parseInt(message.newpms);
+				var system_pms = parseInt(message.system_pms);
+				var pm_total = newpms + system_pms;
+				if (pm_total != 0) {
+					pm_total = pm_total > 99 ? "99+" : pm_total;
+					if (newpms != 0) {
+						$(".pm_message_btn").css("color", "#f44336");
+					} else if (newpms == 0 && system_pms > 0) {
+						$(".pm_message_btn").css("color", "#0099ee");
+
+					}
+					$(".newpms").html(newpms);
+					$(".system_pms").html(system_pms);
+
+					$(".pm_totals").html(pm_total);
+				} else {
+					// $(".pm_total_a").css("display","none");
+				};
+				if (message.newpms != 0) {
+					pm_number.html(message.newpms);
+					pm_number.addClass("pmmessage_number");
+				} else {
+					pm_number.css("display", "none");
+				};
+				if (message.system_pms != 0) {
+					sysm_number.html(message.system_pms);
+					sysm_number.addClass("pmmessage_number");
+				} else {
+					sysm_number.css("display", "none");
+				};
+				if (message.newpms != 0) {
+					pm_number.html(message.newpms);
+					pm_number.addClass("pm_numbers_");
+				} else {
+					pm_number.css("display", "none");
+				};
+				if (message.system_pms != 0) {
+					sysm_number.html(message.system_pms);
+					sysm_number.addClass("pm_numbers_");
+				} else {
+					sysm_number.css("display", "none");
+				};
+
+
+			} else {
+
+				pm_number.css("display", "none");
+				sysm_number.css("display", "none");
+
+			}
+		})
+
+		$(".pm_message_box").on("mouseenter", function () {
+			$(this).find(".dropdown-menu").addClass("show");
+			$(this).addClass("active");
+		})
+		$(".pm_message_box").on("mouseleave", function () {
+			$(this).find(".dropdown-menu").removeClass("show");
+			$(this).removeClass("active");
+		})
+
+	})(jQuery);
+</script>
+<script>
+	// 统计在线
+	(function () {
+		var uid = '0';
+		var current_time = '1790330355';
+		var last_time;
+		if (uid > 0) {
+			//10分钟以内不请求。
+			last_time = storagePlus.get('last_active_time_' + uid) || 0;
+			//大于5分钟请求接口。
+			if ((current_time - last_time) / 60 > 5) {
+				$.xpost('user-online_sumtime.htm', {}, function (code, msg) {
+					if (code == 0) {
+						storagePlus.set('last_active_time_' + uid, msg);
+					} else {
+						console.info('msg');
+					}
+				});
+			}
+		}
+	})();
+
+</script>
+
+<script>
+//     $(function(){
+//         var www_domain = 'www.kanxue.com'
+//         var uidNewArray = [];
+//         $(".avatar_box").each(function(e){
+// 			var uidIsHas = uidNewArray.indexOf($(this).data('uid'));
+// 			if(uidIsHas == -1) {
+// 				uidNewArray.push($(this).data('uid'));
+// 			}
+//         })
+
+//         if(uidNewArray.length > 0) {
+//             $.xpost('//'+www_domain+'/member-is_vip.htm',{'uids':uidNewArray.toString()},function(code,message){
+//                 if(code == 0) {
+
+//                     message.forEach(function(item, index){
+//                         if(item.is_vip != 0) {
+//                             $(".avatar_box[data-uid="+item.uid+"]").addClass("isVipX isVip"+item.is_vip)
+//                             $(".username_box[data-uid="+item.uid+"]").addClass("isVipColor")
+//                         }
+//                     })
+//                 }
+//             })
+//         }
+        
+//     })
+</script>
+
+<script>
+
+var forumlist = [
+    {
+        "fid": 177,
+        "fup": 10,
+        "name": "x64dbg插件区",
+        "rank": 40
+    },
+    {
+        "fid": 52,
+        "fup": 10,
+        "name": "OllyDbg插件区",
+        "rank": 39
+    },
+    {
+        "fid": 53,
+        "fup": 10,
+        "name": "IDA Pro插件区",
+        "rank": 38
+    },
+    {
+        "fid": 4,
+        "fup": 3,
+        "name": "逆向工程",
+        "rank": 29
+    },
+    {
+        "fid": 69,
+        "fup": 97,
+        "name": "经典问答（存档区）",
+        "rank": 29
+    },
+    {
+        "fid": 102,
+        "fup": 137,
+        "name": "科锐培训",
+        "rank": 29
+    },
+    {
+        "fid": 141,
+        "fup": 140,
+        "name": "CrackMe存档区",
+        "rank": 29
+    },
+    {
+        "fid": 2,
+        "fup": 1,
+        "name": "社区版务",
+        "rank": 28
+    },
+    {
+        "fid": 76,
+        "fup": 37,
+        "name": "1)珠海金山2007逆向分析挑战赛",
+        "rank": 28
+    },
+    {
+        "fid": 99,
+        "fup": 65,
+        "name": "《加密与解密(第4版)》",
+        "rank": 28
+    },
+    {
+        "fid": 169,
+        "fup": 78,
+        "name": "15PB培训",
+        "rank": 28
+    },
+    {
+        "fid": 125,
+        "fup": 127,
+        "name": "奇虎360软件安全大赛答案提交区",
+        "rank": 28
+    },
+    {
+        "fid": 21,
+        "fup": 0,
+        "name": "AI 与智能系统",
+        "rank": 27
+    },
+    {
+        "fid": 68,
+        "fup": 37,
+        "name": "2)PEDIY Crackme竞赛2007",
+        "rank": 27
+    },
+    {
+        "fid": 41,
+        "fup": 3,
+        "name": "编程技术",
+        "rank": 27
+    },
+    {
+        "fid": 88,
+        "fup": 3,
+        "name": "加壳脱壳",
+        "rank": 26
+    },
+    {
+        "fid": 91,
+        "fup": 37,
+        "name": "3)2008 Exploit Me挑战赛",
+        "rank": 26
+    },
+    {
+        "fid": 158,
+        "fup": 0,
+        "name": "移动安全",
+        "rank": 26
+    },
+    {
+        "fid": 3,
+        "fup": 0,
+        "name": "PC安全",
+        "rank": 25
+    },
+    {
+        "fid": 120,
+        "fup": 37,
+        "name": "4)腾讯公司2008软件安全竞赛",
+        "rank": 25
+    },
+    {
+        "fid": 57,
+        "fup": 1,
+        "name": "回收站",
+        "rank": 25
+    },
+    {
+        "fid": 127,
+        "fup": 37,
+        "name": "5)奇虎360软件安全比赛",
+        "rank": 24
+    },
+    {
+        "fid": 37,
+        "fup": 116,
+        "name": "CTF对抗",
+        "rank": 23
+    },
+    {
+        "fid": 140,
+        "fup": 37,
+        "name": "6)PEDIY Crackme竞赛2009",
+        "rank": 23
+    },
+    {
+        "fid": 116,
+        "fup": 0,
+        "name": "CTF竞技",
+        "rank": 22
+    },
+    {
+        "fid": 150,
+        "fup": 3,
+        "name": "二进制漏洞",
+        "rank": 22
+    },
+    {
+        "fid": 179,
+        "fup": 0,
+        "name": "工具与资源",
+        "rank": 21
+    },
+    {
+        "fid": 155,
+        "fup": 37,
+        "name": "7)腾讯公司2010软件安全竞赛",
+        "rank": 21
+    },
+    {
+        "fid": 157,
+        "fup": 37,
+        "name": "8)2011 Exploit Me赛",
+        "rank": 20
+    },
+    {
+        "fid": 121,
+        "fup": 37,
+        "name": "9）移动安全挑战赛（MSC）",
+        "rank": 18
+    },
+    {
+        "fid": 152,
+        "fup": 65,
+        "name": "问答版块",
+        "rank": 18
+    },
+    {
+        "fid": 129,
+        "fup": 37,
+        "name": "10）第2届移动安全挑战（MSC）",
+        "rank": 17
+    },
+    {
+        "fid": 97,
+        "fup": 136,
+        "name": "求助问答",
+        "rank": 12
+    },
+    {
+        "fid": 136,
+        "fup": 0,
+        "name": "社区交流",
+        "rank": 12
+    },
+    {
+        "fid": 45,
+        "fup": 136,
+        "name": "茶余饭后",
+        "rank": 6
+    },
+    {
+        "fid": 161,
+        "fup": 158,
+        "name": "Android安全",
+        "rank": 6
+    },
+    {
+        "fid": 128,
+        "fup": 158,
+        "name": "IoT安全",
+        "rank": 5
+    },
+    {
+        "fid": 171,
+        "fup": 116,
+        "name": "Pwn",
+        "rank": 5
+    },
+    {
+        "fid": 162,
+        "fup": 136,
+        "name": "安全资讯",
+        "rank": 5
+    },
+    {
+        "fid": 175,
+        "fup": 137,
+        "name": "《二万班安卓高级研修》",
+        "rank": 5
+    },
+    {
+        "fid": 10,
+        "fup": 179,
+        "name": "安全工具",
+        "rank": 4
+    },
+    {
+        "fid": 47,
+        "fup": 136,
+        "name": "招聘专区",
+        "rank": 4
+    },
+    {
+        "fid": 170,
+        "fup": 21,
+        "name": "AI 助力安全",
+        "rank": 4
+    },
+    {
+        "fid": 1,
+        "fup": 0,
+        "name": "站务管理",
+        "rank": 3
+    },
+    {
+        "fid": 78,
+        "fup": 2,
+        "name": "申请提交区",
+        "rank": 3
+    },
+    {
+        "fid": 95,
+        "fup": 179,
+        "name": "开源项目",
+        "rank": 3
+    },
+    {
+        "fid": 137,
+        "fup": 136,
+        "name": "职业生涯",
+        "rank": 3
+    },
+    {
+        "fid": 151,
+        "fup": 116,
+        "name": "WEB安全",
+        "rank": 3
+    },
+    {
+        "fid": 160,
+        "fup": 78,
+        "name": "麦洛科菲培训",
+        "rank": 3
+    },
+    {
+        "fid": 166,
+        "fup": 158,
+        "name": "iOS安全",
+        "rank": 3
+    },
+    {
+        "fid": 168,
+        "fup": 21,
+        "name": "AI 自身安全",
+        "rank": 3
+    },
+    {
+        "fid": 176,
+        "fup": 137,
+        "name": "《三万班安卓高级研修》",
+        "rank": 3
+    },
+    {
+        "fid": 20,
+        "fup": 97,
+        "name": "付费问答（存档区）",
+        "rank": 2
+    },
+    {
+        "fid": 132,
+        "fup": 116,
+        "name": "密码应用",
+        "rank": 2
+    },
+    {
+        "fid": 163,
+        "fup": 21,
+        "name": "AI 工具与工作流",
+        "rank": 2
+    },
+    {
+        "fid": 172,
+        "fup": 179,
+        "name": "原创软件",
+        "rank": 2
+    },
+    {
+        "fid": 29,
+        "fup": 2,
+        "name": "论坛版主团队",
+        "rank": 2
+    },
+    {
+        "fid": 32,
+        "fup": 179,
+        "name": "外文翻译",
+        "rank": 1
+    },
+    {
+        "fid": 65,
+        "fup": 2,
+        "name": "安全图书",
+        "rank": 1
+    },
+    {
+        "fid": 123,
+        "fup": 21,
+        "name": "AI 平台与数据安全",
+        "rank": 1
+    },
+    {
+        "fid": 174,
+        "fup": 65,
+        "name": "International  vision",
+        "rank": 1
+    },
+    {
+        "fid": 178,
+        "fup": 158,
+        "name": "HarmonyOS",
+        "rank": 1
+    },
+    {
+        "fid": 64,
+        "fup": 136,
+        "name": "会员专区",
+        "rank": 0
+    },
+    {
+        "fid": 122,
+        "fup": 37,
+        "name": "11)KCTF 2026提交区(隐藏版块)",
+        "rank": 0
+    }
+];
+
+// 三级版块
+function forum_tree(forumlist, template) {
+	var template = template || '<option value="{fid}">{tab}{name}</option>'+"\r\n";
+	var s = '';
+	var forumlist1 = forumlist.filter(function(v) {return v.fup == 0});
+	for(var i1=0; i1<forumlist1.length; i1++) {
+		var v1 = forumlist1[i1];
+		s += '►'+xn.template(template, {fid: v1.fid, name: v1.name, tab: "　"});
+		var forumlist2 = forumlist.filter(function(v2) {return v2.fup == v1.fid});
+		for(var i2=0; i2<forumlist2.length; i2++) {
+			var v2 = forumlist2[i2];
+			s += xn.template(template, {fid: v2.fid, name: v2.name, tab: "　　"});
+			var forumlist3 = forumlist.filter(function(v3) {return v3.fup == v2.fid});
+			for(var i3=0; i3<forumlist3.length; i3++) {
+				var v3 = forumlist3[i3];
+				s += xn.template(template, {fid: v3.fid, name: v3.name, tab: "　　　　"});
+			}
+
+		}
+	}
+	return s;
+}
+
+
+// 版主管理：移动 / moderator : move
+$('.mod-button button.move').off('click').on('click', function() {
+	var modtid = $('input[name="modtid"]').checked();
+	if(modtid.length == 0) return $.alert(lang.please_choose_thread);
+	var select = '<select name="fid">'+forum_tree(forumlist)+'</select>';
+	$.confirm(lang.move_forum, function() {
+		var tids = xn.implode('_', modtid);
+		var newfid = $('select[name="fid"]').val();
+		$.xpost(xn.url('mod-move-'+tids+'-'+newfid), function(code, message) {
+			if(code != 0) return $.alert(message);
+			$.alert(message).delay(1000).location('');
+		});
+	}, {'body': '<p>'+lang.choose_move_forum+'：'+select+'</p>'});
+})
+
+</script><script>
+
+// 版主管理：审核
+$('.mod-button button.audit').on('click', function() {
+	var modtid = $('input[name="modtid"]').checked();
+	if(modtid.length == 0) return $.alert(lang.please_choose_thread);
+	var radios = xn.form_radio('audit', {"1": "审核通过", "2": "审核不通过"});
+	$.confirm('审核主题', function() {
+		var tids = xn.implode('_', modtid);
+		var audit = $('input[name="audit"]').checked();
+		var postdata = {audit: audit};
+		$.xpost(xn.url('mod-audit-'+tids), postdata, function(code, message) {
+			if(code != 0) return $.alert(message);
+			$.alert(message).delay(1000).location('');
+		});
+	}, {'body': '<p>'+'审核选项'+'：'+radios+'</p>'});
+})
+
+</script><script>
+
+    // 版主管理：审核
+    $('.mod-button button.limit').on('click', function() {
+        var modtid = $('input[name="modtid"]').checked();
+        if(modtid.length == 0) return $.alert(lang.please_choose_thread);
+        var radios = xn.form_radio('limit', {"0": "验证通过", "1": "待验证"});
+        $.confirm('验证主题', function() {
+            var tids = xn.implode('_', modtid);
+            var limit = $('input[name="limit"]').checked();
+            var postdata = {audit: limit};
+            $.xpost(xn.url('mod-newuser_audit-'+tids), postdata, function(code, message) {
+                if(code != 0) return $.alert(message);
+                $.alert(message).delay(1000).location('');
+            });
+        }, {'body': '<p>'+'验证选项'+'：'+radios+'</p>'});
+    })
+
+    </script>
+
+<script>
+
+$(function() {
+	// 版主管理：删除 / moderator : delete
+	$('.mod-button button.delete').off('click').on('click', function() {
+		var modtid = $('input[name="modtid"]').checked();
+		if(modtid.length == 0) return $.alert(lang.please_choose_thread);
+		var radios = '';
+				var reasonInput = '<div style="margin-top:12px;text-align:left;">' +
+			'<label style="font-size:13px;font-weight:normal;">删除原因：</label>' +
+			'<input type="text" name="reason" placeholder="请输入删除原因（可选）" ' +
+			'style="display:block;width:100%;margin-top:6px;padding:6px 8px;font-size:13px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;" />' +
+			'</div>';
+		$.confirm(xn.lang('confirm_delete_thread', {n:modtid.length}) + radios + reasonInput, function() {
+			var tids = xn.implode('_', modtid);
+			var type = $('input[name="type"]').checked();
+			var reason = $('input[name="reason"]').val();
+			$.xpost(xn.url('mod-delete-'+tids), {type: type, reason: reason}, function(code, message) {
+				if(code != 0) return $.alert(message);
+				$.alert(message).delay(1000).location('');
+			});
+		});
+	})
+
+	// 恢复逻辑删除的帖子
+	$('body').on('click', '.post_recover', function() {
+		var jthis = $(this);
+		var href = jthis.data('href');
+		var isfirst = jthis.attr('isfirst');
+		if(window.confirm('确定恢复删除的帖子？')) {
+			$.xpost(href, function(code, message) {
+				var isfirst = jthis.attr('isfirst');
+				if(code == 0) {
+					if(isfirst == '1') {
+						$.location('forum-0.htm');
+					} else {
+						window.location.reload();
+					}
+				} else {
+					$.alert(message);
+				}
+			});
+		}
+		return false;
+	});
+
+})
+
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WG3E345FRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WG3E345FRQ');
+</script>
+
+
+<script src="/plugin/link/jump_prompt.js"></script><script>
+var tids = {
+    "292975": 1789654726,
+    "292936": 1789381297,
+    "292880": 1789631941,
+    "292876": 1790260151,
+    "292870": 1788595884,
+    "292866": 1790321855,
+    "292860": 1788512318,
+    "292853": 1790166459,
+    "292846": 1789957276,
+    "292836": 1789459724,
+    "292825": 1790148227,
+    "292820": 1789806603,
+    "292814": 1788165172,
+    "292809": 1790128015,
+    "292808": 1788846877,
+    "292805": 1788831820,
+    "292802": 1787918838,
+    "292795": 1790285160,
+    "292791": 1790038458,
+    "292789": 1787803215,
+    "292760": 1787537697,
+    "292753": 1787511370,
+    "292748": 1787651440,
+    "292745": 1787475253,
+    "292744": 1787472754,
+    "292740": 1787469342,
+    "292739": 1787467406,
+    "292738": 1787465857
+};
+xn_read_unread(tids, 0);
+</script>

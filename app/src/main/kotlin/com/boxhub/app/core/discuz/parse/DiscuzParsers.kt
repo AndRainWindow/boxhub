@@ -277,6 +277,100 @@ object DiscuzParsers {
         return null
     }
 
+    // ---------- M4 写操作 ----------
+
+    /**
+     * 回帖表单页解析（参考实现 s37 同款配方）。
+     * posttime 必填，缺失视为表单无效。
+     */
+    fun parseReplyForm(doc: Document, fid: String, tid: String): com.boxhub.app.core.model.ReplyContext? {
+        val formhash = formHash(doc) ?: return null
+        val posttime = doc.selectFirst("input[name=posttime]")?.attr("value")?.takeIf { it.isNotBlank() }
+            ?: return null
+        val notice = { name: String ->
+            doc.selectFirst("input[name=$name]")?.attr("value")?.takeIf { it.isNotBlank() }
+        }
+        val idhash = UPDATESECCODE.find(doc.html())?.groupValues?.get(1)?.takeIf { it.isNotBlank() }
+        val seccodeField = SEC_FIELD.find(doc.html())?.groupValues?.get(1) ?: "seccodeverify"
+        val tencentAppid = TENCENT_APPID.find(doc.html())?.groupValues?.get(1)
+        val uid = UID_ANY.find(doc.html())?.groupValues?.get(1)
+            ?: doc.selectFirst("a[href*=space-uid]")?.let { uidFromHref(it.attr("href")) }
+
+        return com.boxhub.app.core.model.ReplyContext(
+            fid = fid,
+            tid = tid,
+            formhash = formhash,
+            posttime = posttime,
+            prefillMessage = doc.selectFirst("textarea[name=message]")?.text() ?: "",
+            noticeAuthor = notice("noticeauthor"),
+            noticeTrimStr = notice("noticetrimstr"),
+            noticeAuthoMsg = notice("noticeauthormsg"),
+            uploadHash = doc.selectFirst("input[name=hash]")?.attr("value")?.takeIf { it.isNotBlank() },
+            uid = uid,
+            seccodeIdhash = idhash,
+            seccodeField = seccodeField,
+            tencentAppId = tencentAppid,
+            maxImageSizeKb = FILE_SIZE_LIMIT.find(doc.html())?.groupValues?.get(1)?.toIntOrNull(),
+            allowedImageExts = IMGEXTS.find(doc.html())?.groupValues?.get(1)
+                ?.split(",")?.map { it.trim() }?.filter { it.isNotEmpty() } ?: emptyList(),
+        )
+    }
+
+    /** 写操作响应三态判读（成功 pid / 错误分类 / 需验证码） */
+    fun interpretWriteResponse(html: String): WriteOutcome {
+        if (SUCCESSED.find(html) != null ||
+            html.contains("回复发布成功") || html.contains("发表回复成功")
+        ) {
+            val pid = NEW_PID.find(html)?.groupValues?.get(1)
+            return WriteOutcome.Success(pid)
+        }
+        val err = ERR_ALERT.find(html)?.groupValues?.get(1)
+            ?: ERR_MESSAGE.find(html)?.groupValues?.get(1)
+            ?: ERR_DIALOG.find(html)?.groupValues?.get(1)
+            ?: ""
+        return when {
+            err.contains("验证码") || err.contains("验证失败") ->
+                WriteOutcome.NeedsCaptcha(err)
+            err.contains("两次发表") || err.contains("发表太频繁") || err.contains("间隔") ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.Cooldown, err)
+            err.contains("请先进行手机绑定") ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.MobileBindRequired, err)
+            err.contains("您需要先登录") || err.contains("请先登录") ->
+                WriteOutcome.SessionExpired
+            err.contains("没有权限") || err.contains("无权") ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.NoPermission, err)
+            err.contains("waf_slider_verify") || err.contains("enable JavaScript") ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.RateLimited, err)
+            err.isNotBlank() ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.ContentBlocked, err)
+            else ->
+                WriteOutcome.Fail(com.boxhub.app.core.discuz.result.ErrorKind.Unknown, null)
+        }
+    }
+
+    /** swfupload 上传响应解析（五级阶梯：DISCUZUPLOAD → aid JSON → 附件路径 → url 字段 → 裸 URL） */
+    fun parseUploadResponse(text: String): Pair<String?, String?> {
+        UPLOAD_RESP.find(text)?.let { m ->
+            val status = m.groupValues[1]
+            val aid = m.groupValues[2]
+            if (status == "0" && aid.isNotBlank()) return aid to null
+            if (status != "0") return null to "上传失败($status)"
+        }
+        JSON_AID.find(text)?.let { return it.groupValues[1] to null }
+        ATTACH_PATH.find(text)?.let { return null to "PATH:${it.value}" }
+        val url = URL_FIELD.find(text)?.groupValues?.get(1)
+            ?: text.trim().takeIf { it.startsWith("http") }
+        return if (url != null) null to "URL:$url" else (null to null)
+    }
+
+    /** 写操作判读结果 */
+    sealed interface WriteOutcome {
+        data class Success(val pid: String?) : WriteOutcome
+        data class NeedsCaptcha(val message: String) : WriteOutcome
+        data class Fail(val kind: com.boxhub.app.core.discuz.result.ErrorKind, val message: String?) : WriteOutcome
+        data object SessionExpired : WriteOutcome
+    }
+
     // ---------- 版块目录 ----------
 
     /** 从首页/分组页提取版块链接（两种形态：rewrite 与 query） */
@@ -407,4 +501,18 @@ object DiscuzParsers {
     private val MIN_AGO = Regex("(\\d{1,3})\\s*分钟前")
     private val HOUR_AGO = Regex("(\\d{1,3})\\s*小时前")
     private val HEX_COLOR = Regex("#[0-9a-fA-F]{6}")
+    private val UPDATESECCODE = Regex("updateseccode\\('([^']+)'")
+    private val SEC_FIELD = Regex("<input[^>]+name=\"(seccode[a-z_]*)\"", RegexOption.IGNORE_CASE)
+    private val TENCENT_APPID = Regex("(?:captchaAppId|appid)\\s*[:=]\\s*['\"]?(\\d{6,})")
+    private val UID_ANY = Regex("[?&](?:amp;)?uid=(\\d+)")
+    private val FILE_SIZE_LIMIT = Regex("file_size_limit\\s*:\\s*\"(\\d+)\"")
+    private val IMGEXTS = Regex("imgexts\\s*=\\s*'([^']+)'")
+    private val SUCCESSED = Regex("succeedhandle_\\w+")
+    private val ERR_ALERT = Regex("errorhandle_\\w+\\(\\s*'([^']*)'")
+    private val ERR_MESSAGE = Regex("class=\"[^\"]*(?:messagetext|alert_error)[^\"]*\"[^>]*>([^<]{2,200})")
+    private val ERR_DIALOG = Regex("showDialog\\(\\s*'([^']+)'\\s*")
+    private val NEW_PID = Regex("pid['\"=:\\s]+['\"]?(\\d+)")
+    private val UPLOAD_RESP = Regex("DISCUZ_?UPLOAD\\|(\\d+)\\|(\\d*)")
+    private val JSON_AID = Regex("['\"]aid['\"]\\s*:\\s*['\"]?(\\d+)")
+    private val URL_FIELD = Regex("['\"]url['\"]\\s*:\\s*['\"]([^'\"]+)['\"]")
 }

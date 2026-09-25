@@ -48,6 +48,31 @@ SITES = {
         "base_url": "https://www.mydigit.cn/",
         "home": "forum.php",
     },
+    "52pojie": {
+        "display_name": "吾爱破解",
+        "base_url": "https://www.52pojie.cn/",
+        "home": "forum.php",
+    },
+    "chiphell": {
+        "display_name": "Chiphell",
+        "base_url": "https://www.chiphell.com/",
+        "home": "forum.php",
+    },
+    "histb": {
+        "display_name": "海纳斯",
+        "base_url": "https://bbs.histb.com/",
+        "home": "",
+    },
+    "kanxue": {
+        "display_name": "看雪",
+        "base_url": "https://bbs.kanxue.com/",
+        "home": "",
+    },
+    "v2ex": {
+        "display_name": "V2EX",
+        "base_url": "https://www.v2ex.com/",
+        "home": "",
+    },
 }
 
 # 默认证书校验（不关闭）
