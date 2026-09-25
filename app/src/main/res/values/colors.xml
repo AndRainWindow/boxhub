@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="window_background_light">#ECECF2</color>
+    <!-- 夜色主题覆盖于 values-night；base 声明满足 MissingDefaultResource -->
+    <color name="window_background_dark">#111318</color>
     <color name="ic_launcher_background">#3A6EA5</color>
 </resources>
