@@ -1,0 +1,143 @@
+{
+  "site": "mydigit",
+  "display_name": "数码之家",
+  "base_url": "https://www.mydigit.cn/",
+  "probed_at": "2026-09-25 09:47:50",
+  "checks": {
+    "home": {
+      "url": "https://www.mydigit.cn/forum.php",
+      "status": 200,
+      "bytes": 51969,
+      "final_url": "https://www.mydigit.cn/forum.php",
+      "error": null,
+      "server": "nginx",
+      "set_cookies": [
+        "security_session_verify=ff502c6cb177fd89cc0b08d9fbe6135c; expires=Mon, 28-Sep-26 09:47:44 GMT; path=/; HttpOnly"
+      ],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": "Discuz! X3.4",
+    "powered_by": null,
+    "generator": "Discuz! X3.4"
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": null,
+    "alive": true,
+    "modules": {
+      "forumindex": true,
+      "forumdisplay": true
+    },
+    "cookiepre": "VhUn_2132_",
+    "formhash": "1896268b",
+    "forumlist_count": 33,
+    "sample_boards": [
+      {
+        "fid": "37",
+        "name": "数码值得买",
+        "threads": "114746"
+      },
+      {
+        "fid": "40",
+        "name": "WiFi/路由器",
+        "threads": "4935"
+      },
+      {
+        "fid": "43",
+        "name": "数码杂谈",
+        "threads": "7281"
+      },
+      {
+        "fid": "51",
+        "name": "拆机乐园",
+        "threads": "78505"
+      },
+      {
+        "fid": "56",
+        "name": "创意DIY",
+        "threads": "17728"
+      },
+      {
+        "fid": "59",
+        "name": "电子学堂",
+        "threads": "5790"
+      },
+      {
+        "fid": "63",
+        "name": "U盘存储技术",
+        "threads": "9695"
+      },
+      {
+        "fid": "66",
+        "name": "电源/充电器",
+        "threads": "9970"
+      }
+    ],
+    "forumdisplay_sample": {
+      "fid": "37",
+      "threads": 30
+    },
+    "forumdisplay_keys": [
+      "attachment",
+      "author",
+      "authorid",
+      "cover",
+      "coverpath",
+      "dateline",
+      "dbdateline",
+      "dblastpost",
+      "digest",
+      "displayorder",
+      "lastpost",
+      "lastposter",
+      "price",
+      "readperm",
+      "recommend_add",
+      "replies",
+      "reply",
+      "replycredit",
+      "rushreply",
+      "special",
+      "subject",
+      "tid",
+      "typeid",
+      "views"
+    ]
+  },
+  "forumdisplay": {
+    "fid": "37",
+    "status": 200,
+    "bytes": 80405,
+    "unique_threads": 61,
+    "normalthread_rows": 0,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "unknown",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "rewrite_thread": {
+    "tid": "622005",
+    "status": 200,
+    "ok": true,
+    "has_pid": true,
+    "final_url": "https://www.mydigit.cn/thread-622005-1-1.html",
+    "error": null
+  },
+  "risks": [
+    "safedog-or-similar-session"
+  ],
+  "conclusion": "ok"
+}

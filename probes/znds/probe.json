@@ -1,0 +1,129 @@
+{
+  "site": "znds",
+  "display_name": "ZNDS 智能电视网",
+  "base_url": "https://www.znds.com/",
+  "probed_at": "2026-09-25 09:52:29",
+  "checks": {
+    "home": {
+      "url": "https://www.znds.com/forum.php",
+      "status": 200,
+      "bytes": 186237,
+      "final_url": "https://www.znds.com/forum.php",
+      "error": null,
+      "server": null,
+      "set_cookies": [],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "meta"
+  },
+  "discuz": {
+    "version": "Discuz! X3.4",
+    "powered_by": null,
+    "generator": "Discuz! X3.4"
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": null,
+    "alive": true,
+    "modules": {
+      "forumindex": true,
+      "forumdisplay": true
+    },
+    "cookiepre": "s9it_2132_",
+    "formhash": "593aef3f",
+    "forumlist_count": 111,
+    "sample_boards": [
+      {
+        "fid": "556",
+        "name": "当贝超级盒子",
+        "threads": "2423"
+      },
+      {
+        "fid": "2",
+        "name": "综合交流大区",
+        "threads": "40912"
+      },
+      {
+        "fid": "38",
+        "name": "TV软件讨论交流",
+        "threads": "6194"
+      },
+      {
+        "fid": "64",
+        "name": "海信智能电视",
+        "threads": "9035"
+      },
+      {
+        "fid": "86",
+        "name": "综合投影交流区",
+        "threads": "4374"
+      },
+      {
+        "fid": "88",
+        "name": "智能外设交流区",
+        "threads": "2854"
+      },
+      {
+        "fid": "95",
+        "name": "网站活动专版",
+        "threads": "12160"
+      },
+      {
+        "fid": "98",
+        "name": "站务处理",
+        "threads": "17215"
+      }
+    ],
+    "forumdisplay_sample": {
+      "fid": "556",
+      "threads": 34
+    },
+    "forumdisplay_keys": [
+      "attachment",
+      "author",
+      "authorid",
+      "dateline",
+      "dbdateline",
+      "dblastpost",
+      "digest",
+      "displayorder",
+      "lastpost",
+      "lastposter",
+      "price",
+      "readperm",
+      "recommend_add",
+      "replies",
+      "reply",
+      "replycredit",
+      "rushreply",
+      "special",
+      "subject",
+      "tid",
+      "typeid",
+      "views"
+    ]
+  },
+  "forumdisplay": {
+    "fid": "556",
+    "status": 200,
+    "bytes": 137286,
+    "unique_threads": 0,
+    "normalthread_rows": 50,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "tbody[id^=normalthread_]",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "risks": [],
+  "conclusion": "ok"
+}

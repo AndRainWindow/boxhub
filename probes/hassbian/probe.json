@@ -1,0 +1,142 @@
+{
+  "site": "hassbian",
+  "display_name": "瀚思彼岸",
+  "base_url": "https://bbs.hassbian.com/",
+  "probed_at": "2026-09-25 09:47:46",
+  "checks": {
+    "home": {
+      "url": "https://bbs.hassbian.com/forum.php",
+      "status": 200,
+      "bytes": 64547,
+      "final_url": "https://bbs.hassbian.com/forum.php",
+      "error": null,
+      "server": "nginx",
+      "set_cookies": [
+        "gXRl_2132_saltkey=isRssSri; expires=Sun, 25 Oct 2026 01:47:48 GMT; Max-Age=2592000; path=/; secure; HttpOnly"
+      ],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": "Discuz! X3.5",
+    "powered_by": "Powered by Discuz!",
+    "generator": "Discuz! X3.5"
+  },
+  "cookie_prefix": "gXRl_2132",
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": null,
+    "alive": true,
+    "modules": {
+      "forumindex": true,
+      "forumdisplay": true
+    },
+    "cookiepre": "gXRl_2132_",
+    "formhash": "6d323f35",
+    "forumlist_count": 13,
+    "sample_boards": [
+      {
+        "fid": "75",
+        "name": "『冬瓜HA』专区",
+        "threads": "598"
+      },
+      {
+        "fid": "38",
+        "name": "『HomeAssistant』综合讨论区",
+        "threads": "17442"
+      },
+      {
+        "fid": "57",
+        "name": "『闲置设备』交易区",
+        "threads": "295"
+      },
+      {
+        "fid": "61",
+        "name": "『HASS & HASSIO』开发综合讨论区",
+        "threads": "117"
+      },
+      {
+        "fid": "47",
+        "name": "『意见建议』提交区",
+        "threads": "181"
+      },
+      {
+        "fid": "59",
+        "name": "『Node-RED』综合讨论区",
+        "threads": "1183"
+      },
+      {
+        "fid": "63",
+        "name": "『HASS兼容产品』众测专区",
+        "threads": "99"
+      },
+      {
+        "fid": "70",
+        "name": "『合作需求』发布区",
+        "threads": "36"
+      }
+    ],
+    "forumdisplay_sample": {
+      "fid": "75",
+      "threads": 35
+    },
+    "forumdisplay_keys": [
+      "attachment",
+      "attachmentImageNumber",
+      "attachmentImagePreviewList",
+      "author",
+      "authorid",
+      "dateline",
+      "dbdateline",
+      "dblastpost",
+      "digest",
+      "displayorder",
+      "lastpost",
+      "lastposter",
+      "message",
+      "price",
+      "readperm",
+      "recommend_add",
+      "replies",
+      "reply",
+      "replycredit",
+      "rushreply",
+      "special",
+      "subject",
+      "tid",
+      "typeid",
+      "views"
+    ]
+  },
+  "forumdisplay": {
+    "fid": "75",
+    "status": 200,
+    "bytes": 123642,
+    "unique_threads": 74,
+    "normalthread_rows": 29,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "tbody[id^=normalthread_]",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "rewrite_thread": {
+    "tid": "577",
+    "status": 200,
+    "ok": true,
+    "has_pid": true,
+    "final_url": "https://bbs.hassbian.com/thread-577-1-1.html",
+    "error": null
+  },
+  "risks": [],
+  "conclusion": "ok"
+}

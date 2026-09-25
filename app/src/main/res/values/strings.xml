@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BoxHub</string>
+    <string name="tab_feed">聚合</string>
+    <string name="tab_boards">版块</string>
+    <string name="tab_notices">通知</string>
+</resources>

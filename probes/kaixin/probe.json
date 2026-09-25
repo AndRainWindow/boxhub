@@ -1,0 +1,67 @@
+{
+  "site": "kaixin",
+  "display_name": "开心电视",
+  "base_url": "https://www.kaixindianshi.com/",
+  "probed_at": "2026-09-25 09:47:49",
+  "checks": {
+    "home": {
+      "url": "https://www.kaixindianshi.com/index.php",
+      "status": 200,
+      "bytes": 75683,
+      "final_url": "https://www.kaixindianshi.com/index.php",
+      "error": null,
+      "server": "cloudflare",
+      "set_cookies": [
+        "ok8J_2132_saltkey=HINb1n18; expires=Sun, 25-Oct-2026 01:47:51 GMT; Max-Age=2592000; path=/; secure; HttpOnly"
+      ],
+      "cf_server": true
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "http-header"
+  },
+  "discuz": {
+    "version": "Discuz! X3.4",
+    "powered_by": "Powered by Discuz!",
+    "generator": "Discuz! X3.4"
+  },
+  "cookie_prefix": "ok8J_2132",
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": "parse:Expecting value: line 1 column 1 (char 0)",
+    "alive": false,
+    "modules": {},
+    "raw_head": "<?xml version=\"1.0\" encoding=\"utf-8\"?><!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"application/xhtml+xml; charset=utf-8\"/>\r\n<meta http-equiv=\"Cache-control\" content=\"no-cache\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.3,  minimum-scale=1.0, maximum-scale=2.0\"/>\r\n<meta name=\"MobileOptimized\" content=\"240\"/>\r\n"
+  },
+  "forumdisplay": {
+    "fid": "80",
+    "status": 200,
+    "bytes": 136666,
+    "unique_threads": 24,
+    "normalthread_rows": 20,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "tbody[id^=normalthread_]",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "rewrite_thread": {
+    "tid": "3894",
+    "status": 200,
+    "ok": true,
+    "has_pid": true,
+    "final_url": "https://www.kaixindianshi.com/thread-3894-1-1.html",
+    "error": null
+  },
+  "risks": [
+    "cloudflare-like-headers",
+    "cf-challenge-page"
+  ],
+  "conclusion": "ok"
+}

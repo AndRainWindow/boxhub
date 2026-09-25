@@ -1,0 +1,62 @@
+{
+  "site": "enshan",
+  "display_name": "恩山无线",
+  "base_url": "https://www.right.com.cn/forum/",
+  "probed_at": "2026-09-25 09:52:23",
+  "checks": {
+    "home": {
+      "url": "https://www.right.com.cn/forum/forum.php",
+      "status": 200,
+      "bytes": 113843,
+      "final_url": "https://www.right.com.cn/forum/forum.php",
+      "error": null,
+      "server": null,
+      "set_cookies": [],
+      "cf_server": false
+    }
+  },
+  "charset": {
+    "value": "UTF-8",
+    "source": "meta"
+  },
+  "discuz": {
+    "version": "Discuz! X3.5",
+    "powered_by": "Powered by Discuz!",
+    "generator": "Discuz! X3.5"
+  },
+  "cookie_prefix": null,
+  "anon_view": {
+    "discuz_uid_present": true,
+    "uid_value": "0"
+  },
+  "mobile_api": {
+    "status": 200,
+    "error": "parse:Expecting value: line 1 column 1 (char 0)",
+    "alive": false,
+    "modules": {},
+    "raw_head": "<?xml version=\"1.0\" encoding=\"utf-8\"?><!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\">\r\n<meta http-equiv=\"Cache-control\" content=\"no-cache\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0\">\r\n<meta name=\"format-detection\" content=\"telephone=no\" />\r\n<title>恩山无线论坛 -  手机版 - Powered by Discuz!</title>\r\n<meta name=\"keywords\" content=\"恩山无线论坛,恩山论坛,无线论坛,无线路由器论�"
+  },
+  "forumdisplay": {
+    "fid": "176",
+    "status": 200,
+    "bytes": 70680,
+    "unique_threads": 29,
+    "normalthread_rows": 20,
+    "li_pbw": false,
+    "datatable": false,
+    "thread_row_pattern": "tbody[id^=normalthread_]",
+    "page_markers": [
+      "2"
+    ]
+  },
+  "rewrite_thread": {
+    "tid": "8287728",
+    "status": 200,
+    "ok": true,
+    "has_pid": true,
+    "final_url": "https://www.right.com.cn/forum/thread-8287728-1-1.html",
+    "error": null
+  },
+  "risks": [],
+  "conclusion": "ok"
+}
