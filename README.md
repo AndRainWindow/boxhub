@@ -25,7 +25,6 @@
 - **协议主路径**：Discuz Web HTML（`forum.php?mod=...` + formhash + cookie），mobile API 仅作加速
 - **差异三级收敛**：L1 `SiteConfig` 纯数据 / L2 `DiscuzSelectors` 选择器 / L3 `DiscuzDriver` 钩子
 - **主题行锚点**（M0 实测五站通用）：`tbody[id^=normalthread_]`，tid 直接内嵌行 id
-- 反编译同类客户端（Re:Source）仅作**协议与设计参考**，代码全部自研，不搬运其代码与资源
 
 ## 构建
 
