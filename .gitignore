@@ -1,5 +1,6 @@
 *.iml
 .gradle/
+.kotlin/
 /local.properties
 /.idea/
 .DS_Store
@@ -10,3 +11,8 @@
 local.properties
 app/build/
 probes/_raw/
+
+# 发布签名（本地产物，绝不入库；换机器/丢失 = 无法覆盖安装升级）
+keystore.properties
+*.keystore
+*.jks
